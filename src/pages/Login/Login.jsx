@@ -3,7 +3,7 @@ import { CustomButton } from "../../common/CustomButton/CustomButton";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import { validame } from "../../utils/functions";
 import "./Login.css";
-// import { LoginUser } from "../../services/apiCalls";
+import { LoginUser } from "../../services/apiCalls";
 import { useNavigate } from "react-router-dom";
 import { decodeToken } from "react-jwt";
 import { Header } from "../../common/Header/Header";
@@ -68,9 +68,9 @@ export const Login = () => {
       };
 
       localStorage.setItem("passport", JSON.stringify(passport));
-
+      console.log(decodificado)
       setMsgError(
-        `WELCOME BACK ${decodificado.name}`
+        `WELCOME BACK ${(decodificado.userName).toUpperCase()}`
       );
 
       setTimeout(() => {

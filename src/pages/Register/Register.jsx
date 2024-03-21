@@ -2,7 +2,7 @@ import { useState } from "react";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import "./Register.css";
 import { CustomButton } from "../../common/CustomButton/CustomButton";
-// import { RegisterUser } from "../../services/apiCalls";
+import { RegisterUser } from "../../services/apiCalls";
 import { validame } from "../../utils/functions";
 import { useNavigate } from "react-router-dom";
 import { Header } from "../../common/Header/Header";
@@ -12,13 +12,13 @@ export const Register = () => {
   const navigate = useNavigate();
 
   const [user, setUser] = useState({
-    name: "",
+    firstName: "",
     email: "",
     password: "",
   });
 
   const [userError, setUserError] = useState({
-    nameError: "",
+    firstNameError: "",
     emailError: "",
     passwordError: "",
   });
@@ -73,16 +73,16 @@ export const Register = () => {
       <div className="registerDesign">
         {/* <pre>{JSON.stringify(user, null, 2)}</pre> */}
         <CustomInput
-          className={`inputDesign ${userError.nameError !== "" ? "inputDesignError" : ""
+          className={`inputDesign ${userError.firstNameError !== "" ? "inputDesignError" : ""
             }`}
           type={"text"}
-          placeholder={"name"}
-          name={"name"}
-          value={user.name || ""}
+          placeholder={"firstName"}
+          name={"firstName"}
+          value={user.firstName || ""}
           onChangeFunction={(e) => inputHandler(e)}
           onBlurFunction={(e) => checkError(e)}
         />
-        <div className="error">{userError.nameError}</div>
+        <div className="error">{userError.firstNameError}</div>
         <CustomInput
           className={`inputDesign ${userError.emailError !== "" ? "inputDesignError" : ""
             }`}
