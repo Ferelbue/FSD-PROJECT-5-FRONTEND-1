@@ -1,0 +1,12 @@
+.homeDesign {
+
+    height: 88vh;
+    max-width: 100%;
+
+    background-color: beige;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,15 @@
+.headerDesign {
+    height: 16vh;
+    max-width: 100%;
+
+    background: darkcyan;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+}
