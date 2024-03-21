@@ -3,7 +3,7 @@ import { CustomButton } from "../../common/CustomButton/CustomButton";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import { validame } from "../../utils/functions";
 import "./Login.css";
-import { LoginUser } from "../../services/apiCalls";
+// import { LoginUser } from "../../services/apiCalls";
 import { useNavigate } from "react-router-dom";
 import { decodeToken } from "react-jwt";
 import { Header } from "../../common/Header/Header";
@@ -83,37 +83,39 @@ export const Login = () => {
   };
 
   return (
-    <div className="loginDesign">
+    <>
       <Header />
-      <CustomInput
-        className={`inputDesign ${credencialesError.emailError !== "" ? "inputDesignError" : ""
-          }`}
-        type={"email"}
-        placeholder={"email"}
-        name={"email"}
-        value={credenciales.email || ""}
-        onChangeFunction={(e) => inputHandler(e)}
-        onBlurFunction={(e) => checkError(e)}
-      />
-      <div className="error">{credencialesError.emailError}</div>
-      <CustomInput
-        className={`inputDesign ${credencialesError.passwordError !== "" ? "inputDesignError" : ""
-          }`}
-        type={"password"}
-        placeholder={"password"}
-        name={"password"}
-        value={credenciales.password || ""}
-        onChangeFunction={(e) => inputHandler(e)}
-        onBlurFunction={(e) => checkError(e)}
-      />
-      <div className="error">{credencialesError.passwordError}</div>
+      <div className="loginDesign">
+        <CustomInput
+          className={`inputDesign ${credencialesError.emailError !== "" ? "inputDesignError" : ""
+            }`}
+          type={"email"}
+          placeholder={"email"}
+          name={"email"}
+          value={credenciales.email || ""}
+          onChangeFunction={(e) => inputHandler(e)}
+          onBlurFunction={(e) => checkError(e)}
+        />
+        <div className="error">{credencialesError.emailError}</div>
+        <CustomInput
+          className={`inputDesign ${credencialesError.passwordError !== "" ? "inputDesignError" : ""
+            }`}
+          type={"password"}
+          placeholder={"password"}
+          name={"password"}
+          value={credenciales.password || ""}
+          onChangeFunction={(e) => inputHandler(e)}
+          onBlurFunction={(e) => checkError(e)}
+        />
+        <div className="error">{credencialesError.passwordError}</div>
 
-      <CustomButton
-        className={"cButtonDesign"}
-        title={"Login"}
-        functionEmit={loginMe}
-      />
-      <div className="error">{msgError}</div>
-    </div>
+        <CustomButton
+          className={"cButtonDesign"}
+          title={"Login"}
+          functionEmit={loginMe}
+        />
+        <div className="error">{msgError}</div>
+      </div>
+    </>
   );
 };
