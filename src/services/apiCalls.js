@@ -60,7 +60,7 @@ export const GetProfile = async (token) => {
 
   try {
     const response = await fetch(`${root}users/profile`, options);
-
+    console.log("hola");
     const data = await response.json();
 
     if (!data.success) {
