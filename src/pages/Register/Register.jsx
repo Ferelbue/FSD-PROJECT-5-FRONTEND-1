@@ -13,12 +13,16 @@ export const Register = () => {
 
   const [user, setUser] = useState({
     firstName: "",
+    lastName: "",
+    image: "",
     email: "",
     password: "",
   });
 
   const [userError, setUserError] = useState({
     firstNameError: "",
+    lastNameError: "",
+    imageError: "",
     emailError: "",
     passwordError: "",
   });
@@ -83,6 +87,25 @@ export const Register = () => {
           onBlurFunction={(e) => checkError(e)}
         />
         <div className="error">{userError.firstNameError}</div>
+        <CustomInput
+          className={`inputDesign`}
+          type={"text"}
+          placeholder={"lastName"}
+          name={"lastName"}
+          value={user.lastName || ""}
+          onChangeFunction={(e) => inputHandler(e)}
+          onBlurFunction={(e) => checkError(e)}
+        />
+        <CustomInput
+          className={`inputDesign`}
+          type={"text"}
+          placeholder={"image"}
+          name={"image"}
+          value={user.image || ""}
+          onChangeFunction={(e) => inputHandler(e)}
+          onBlurFunction={(e) => checkError(e)}
+        />
+        <div className="error">{userError.imageError}</div>
         <CustomInput
           className={`inputDesign ${userError.emailError !== "" ? "inputDesignError" : ""
             }`}
