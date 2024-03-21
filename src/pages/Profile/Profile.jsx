@@ -39,10 +39,10 @@ export const Profile = () => {
                   <img className="img" src={profileData.data[0].image} alt="pers1" />
                 </div>
                 <div className="appointment">
-                <p>Citas:</p>
+                <p className="center">Citas:</p>
                 {profileData.data[0].appointments.map((appointment, index) => (
                     <div>
-                    <p>Fecha: {dayjs(appointment.appointmentDate).format("YYYY-MM-DD")} -> Servicio: {appointment.service.serviceName}</p>
+                    <p>Fecha: {dayjs(appointment.appointmentDate).format("YYYY-MM-DD")} - Servicio: {appointment.service.serviceName}</p>
                     
                   </div>
                 ))}

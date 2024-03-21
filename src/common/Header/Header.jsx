@@ -11,8 +11,8 @@ export const Header = () => {
       {token ? (
         <div className="menu">
           <CustomLink title="Timeline" destination="/timeline" />
+          <CustomLink title="Appointments" destination="/appointments" />
           <CustomLink title={`${token.decodificado.userName.toUpperCase()}`} destination="/profile" />
-          <CustomLink title="Posts" destination="/posts" />
           <CustomLink title="Log-out" destination="/logout" />
         </div>
       ) : (
