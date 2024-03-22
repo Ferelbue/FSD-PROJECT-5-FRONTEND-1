@@ -97,3 +97,22 @@ export const GetAppointments = async (token) => {
     return error;
   }
 };
+
+export const deleteAppointment = async (postId, token) => {
+  try {
+    const response = await fetch(`${root}appointments/${postId}`, {
+      method: 'DELETE',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+    });
+    if (!response.ok) {
+      throw new Error('No se pudo eliminar el post');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Error al actualizar el post:', error);
+    throw error;
+  }
+};

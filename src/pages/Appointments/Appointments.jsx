@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import './Appointments.css';
 import { Header } from "../../common/Header/Header";
-import { GetAppointments} from "../../services/apiCalls";
-import { CustomLink } from "../../common/CustomLink/CustomLink";
+import { GetAppointments, deleteAppointment} from "../../services/apiCalls";
+import { CustomDelete } from "../../common/CustomDelete/CustomDelete";
 
 
 export const Appointments = () => {
@@ -26,21 +26,22 @@ export const Appointments = () => {
     fetchUserAppointments();
   }, []);
 
-  // const handleDelete = async (postId) => {
-  //   try {
-  //     // Realizar una solicitud PUT a la base de datos para actualizar el post con el like
-  //     await deletePost(postId, token);
+  const handleDelete = async (appointmentId) => {
+    try {
+      // Realizar una solicitud PUT a la base de datos para actualizar el post con el like
+      console.log(appointmentId)
+      await deleteAppointment(appointmentId, token.token);
 
-  //     // Actualizar los datos de los posts después de la actualización exitosa
-  //     const updatedPostsData = await getUserPosts(token);
-  //     setPostsData(updatedPostsData);
+      // Actualizar los datos de los posts después de la actualización exitosa
+      const updatedAppointmentData = await GetAppointments(token.token);
+      setAppoinmentsData(updatedAppointmentData);
       
-  //   } catch (error) {
-  //     setError(error);
-  //   }
-  // };
+    } catch (error) {
+      setError(error);
+    }
+  };
 
-console.log(appointmentsData)
+
 
   return (
     <>
@@ -54,7 +55,7 @@ console.log(appointmentsData)
               <p>{appointment.service.serviceName}</p>
             </div>
 
-              <CustomLink title={`DELETE`} onClick={() => handleDelete(post._id)} />
+              <CustomDelete title={`DELETE`} onClick={() => handleDelete(appointment.id)} />
 
           </div>
         ))}
