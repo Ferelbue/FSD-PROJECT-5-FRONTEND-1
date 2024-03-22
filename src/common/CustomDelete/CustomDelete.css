@@ -1,18 +1,18 @@
 
-.navigateDesign {
+.likeDesign {
 
     font-weight: bold;
-    color: rgb(14, 71, 227);
+    color: white;
 
     transition: 0.4s;
     margin: 1em;
     /* width: 5em; */
 }
 
-.navigateDesign:hover {
+.likeDesign:hover {
     cursor: pointer;
     
     transition: 0.4s;
     color: black;
-
+    font-size: large;
 }

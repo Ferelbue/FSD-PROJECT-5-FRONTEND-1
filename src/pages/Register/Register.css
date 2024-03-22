@@ -1,8 +1,8 @@
-.loginDesign {
+.registerDesign {
 
     height: 88vh;
     min-width: 100%;
-    
+
     background-color: rgb(211, 220, 229);
 
     display: flex;

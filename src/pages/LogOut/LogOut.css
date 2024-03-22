@@ -1,0 +1,18 @@
+
+.logOutDesign {
+    height: 84vh;
+    min-width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgb(211, 220, 229);
+    
+    color: black;
+    font-weight: bold;
+    font-size: 5vw;
+}
+.titleRed{
+    color:crimson;
+}

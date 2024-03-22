@@ -4,16 +4,15 @@ import "./Header.css";
 
 export const Header = () => {
 
-  const token = sessionStorage.getItem("token");
-  const user = JSON.parse(sessionStorage.getItem("user"));
+  const token = JSON.parse(localStorage.getItem("passport"));
   
   return (
     <div className="headerDesign">
       {token ? (
         <div className="menu">
           <CustomLink title="Timeline" destination="/timeline" />
-          <CustomLink title={`${user.userName.toUpperCase()}`} destination="/profile" />
-          <CustomLink title="Posts" destination="/posts" />
+          <CustomLink title="Appointments" destination="/appointments" />
+          <CustomLink title={`${token.decodificado.userName.toUpperCase()}`} destination="/profile" />
           <CustomLink title="Log-out" destination="/logout" />
         </div>
       ) : (

@@ -2,7 +2,7 @@
     height: 16vh;
     max-width: 100%;
 
-    background: darkcyan;
+    background: rgb(192, 237, 153);
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
