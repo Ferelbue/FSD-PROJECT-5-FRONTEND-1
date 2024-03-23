@@ -4,12 +4,22 @@ export const validame = (type, value) => {
     case "firstName":
     case "nombre":
     case "surname":
+    case "lastName":
     case "cognom":
       if (value.length < 3) {
         return "Por favor, el nombre debe de tener mínimo tres caracteres.";
       }
 
       return "";
+
+    case "image":
+
+      if (value.length < 3) {
+        return "Por favor, la imagen debe de tener mínimo tres caracteres.";
+      }
+
+      return "";
+
 
     case "email":
     case "e-mail":

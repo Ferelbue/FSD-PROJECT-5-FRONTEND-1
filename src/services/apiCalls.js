@@ -34,7 +34,6 @@ export const LoginUser = async (credenciales) => {
   };
 
   try {
-    console.log("hola",credenciales);
     const response = await fetch(`${root}auth/login`, options);
 
     const data = await response.json();
@@ -60,13 +59,12 @@ export const GetProfile = async (token) => {
 
   try {
     const response = await fetch(`${root}users/profile`, options);
-    console.log("hola");
     const data = await response.json();
 
     if (!data.success) {
       throw new Error(data.message);
     }
-
+    console.log(data)
     return data;
   } catch (error) {
     return error;
@@ -114,5 +112,30 @@ export const deleteAppointment = async (postId, token) => {
   } catch (error) {
     console.error('Error al actualizar el post:', error);
     throw error;
+  }
+};
+
+export const UpdateProfile = async (token, data) => {
+  const options = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
+    },
+    body: JSON.stringify(data)
+  };
+
+  try {
+    const response = await fetch(`${root}users/profile`, options);
+
+    const data = await response.json();
+
+    if (!data.success) {
+      throw new Error(data.message);
+    }
+
+    return data;
+  } catch (error) {
+    return error;
   }
 };
