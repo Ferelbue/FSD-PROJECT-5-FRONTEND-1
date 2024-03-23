@@ -139,3 +139,27 @@ export const UpdateProfile = async (token, data) => {
     return error;
   }
 };
+
+export const GetServices = async (token) => {
+
+  const options = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json"
+    },
+  };
+
+  try {
+    const response = await fetch(`${root}services`, options);
+
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.message);
+    }
+
+    return data;
+
+  } catch (error) {
+    return error;
+  }
+};

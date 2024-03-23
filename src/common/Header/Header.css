@@ -2,7 +2,7 @@
     height: 16vh;
     max-width: 100%;
 
-    background: rgb(192, 237, 153);
+    background-image: url(../../img/header.jpg);
     display: flex;
     flex-direction: row;
     justify-content: flex-end;

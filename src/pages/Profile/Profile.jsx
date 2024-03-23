@@ -6,6 +6,8 @@ import { CustomInput } from "../../common/CustomInput/CustomInput";
 import { Header } from "../../common/Header/Header";
 import { CustomButton } from "../../common/CustomButton/CustomButton";
 import { validame } from "../../utils/functions";
+import Spinner from 'react-bootstrap/Spinner';
+
 
 export const Profile = () => {
   const datosUser = JSON.parse(localStorage.getItem("passport"));
@@ -57,7 +59,10 @@ export const Profile = () => {
         console.log(tokenStorage)
         const fetched = await GetProfile(tokenStorage);
 
-        setLoadedData(true);
+        setTimeout(() => {
+          setLoadedData(true);
+          
+        }, 1000);
 
         // const parsedBirth = dayjs(fetched.data.birth).format("YYYY-MM-DD");
 
@@ -108,7 +113,11 @@ export const Profile = () => {
       <Header />
       <div className="profileDesign">
         {!loadedData ? (
-          <div>CARGANDO</div>
+          <div>
+            <Spinner animation="border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+          </div>
         ) : (
           <div className="profileCardDesign">
             <div className="userData">
