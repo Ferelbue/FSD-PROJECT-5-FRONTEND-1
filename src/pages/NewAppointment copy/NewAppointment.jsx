@@ -1,20 +1,27 @@
 import React, { useState, useEffect } from "react";
-import './NewAppointment.css';
-import { Header } from "../../common/Header/Header";
 import Dropdown from 'react-bootstrap/Dropdown';
-import { GetServices } from "../../services/apiCalls";
-import Datetime from 'react-datetime';
-import 'react-datetime/css/react-datetime.css';
-import moment from 'moment';
+import { Header } from "../../common/Header/Header";
+import { CreateAppointment, GetServices } from "../../services/apiCalls";
 import { CustomButton } from "../../common/CustomButton/CustomButton";
+import Datetime from 'react-datetime';
+import moment from 'moment';
+import 'react-datetime/css/react-datetime.css';
+import './NewAppointment.css';
+import { useNavigate } from "react-router-dom";
+import Spinner from 'react-bootstrap/Spinner';
 
 export const NewAppointment = () => {
 
+  const navigate = useNavigate();
   const [serviceData, setServiceData] = useState();
   const [error, setError] = useState();
   const [date, setSelectedDate] = useState();
   const [selectedService, setSelectedService] = useState();
   const [service, setService] = useState();
+  const datosUser = JSON.parse(localStorage.getItem("passport"));
+
+  const [tokenStorage, setTokenStorage] = useState(datosUser?.token);
+
 
   useEffect(() => {
     const fetchServices = async () => {
@@ -32,16 +39,42 @@ export const NewAppointment = () => {
 
   const handleSelect = (service) => {
     setService(service.serviceName);
-    setSelectedService(service);
-
-    console.log('Seleccionaste el servicio:', service.id);
+    setSelectedService(service.id);
   };
 
 
   const handleDateChange = (date) => {
     const formattedDate = moment(date).format('YYYY-MM-DD');
     setSelectedDate(formattedDate);
-    console.log('Fecha seleccionada en formato YYYY-MM-DD:', formattedDate);
+  };
+
+
+  const createMe = async () => {
+    try {
+      const appointmentSend = {
+        serviceId: selectedService,
+        appointmentDate: date
+      };
+
+      console.log(appointmentSend);
+
+      const fetched = await CreateAppointment(tokenStorage,appointmentSend);
+
+      console.log(fetched)
+      setError(fetched.message);
+
+      {<Spinner animation="border" role="status">
+      <span className="visually-hidden">Loading...</span>
+      </Spinner>}
+
+      setTimeout(() => {
+
+        navigate("/appointments")
+      }, 1200)
+
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
 
@@ -73,7 +106,7 @@ export const NewAppointment = () => {
           <CustomButton
             className={"buttonAppointment"}
             title={"SEND"}
-
+            functionEmit={createMe}
           />
           <div>
             <div>

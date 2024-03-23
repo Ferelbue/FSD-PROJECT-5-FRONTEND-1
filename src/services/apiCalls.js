@@ -163,3 +163,29 @@ export const GetServices = async (token) => {
     return error;
   }
 };
+
+export const CreateAppointment = async (token, appointment) => {
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
+    },
+    body: JSON.stringify(appointment),
+  };
+  console.log(appointment)
+
+  try {
+    const response = await fetch(`${root}appointments`, options);
+
+    const data = await response.json();
+
+    if (!data.success) {
+      throw new Error(data.message);
+    }
+
+    return data;
+  } catch (error) {
+    return error;
+  }
+};
