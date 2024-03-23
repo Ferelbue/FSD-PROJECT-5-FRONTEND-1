@@ -3,6 +3,7 @@ import './Appointments.css';
 import { Header } from "../../common/Header/Header";
 import { GetAppointments, deleteAppointment} from "../../services/apiCalls";
 import { CustomDelete } from "../../common/CustomDelete/CustomDelete";
+import { CustomLink } from "../../common/CustomLink/CustomLink";
 
 
 export const Appointments = () => {
@@ -47,6 +48,11 @@ export const Appointments = () => {
     <>
       <Header />
       <div className='appointmentsDesign'>
+    <div className="newAppointment">
+    <CustomLink title="NEW APPOINTMENT" destination="/newAppointment" />
+    </div>
+
+      <div>
         {appointmentsData && appointmentsData.data.map((appointment, index) => (
           <div key={index} className='appointmentsCardDesign'>
             <div className="body">
@@ -59,6 +65,7 @@ export const Appointments = () => {
 
           </div>
         ))}
+        </div>
       </div>
     </>
   );

@@ -6,6 +6,7 @@ import { Register } from '../Register/Register';
 import { LogOut } from '../LogOut/LogOut';
 import { Profile } from '../Profile/Profile';
 import { Appointments } from '../Appointments/Appointments';
+import { NewAppointment } from '../NewAppointment copy/NewAppointment';
 
 export const Body = () => {
 
@@ -18,6 +19,7 @@ export const Body = () => {
             <Route path="/logout" element={<LogOut />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/appointments" element={<Appointments />} />
+            <Route path="/newAppointment" element={<NewAppointment />} />
         </Routes>
     )
 }
