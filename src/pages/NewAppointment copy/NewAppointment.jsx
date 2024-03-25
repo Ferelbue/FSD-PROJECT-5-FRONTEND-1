@@ -63,10 +63,6 @@ export const NewAppointment = () => {
       console.log(fetched)
       setError(fetched.message);
 
-      {<Spinner animation="border" role="status">
-      <span className="visually-hidden">Loading...</span>
-      </Spinner>}
-
       setTimeout(() => {
 
         navigate("/appointments")
@@ -116,7 +112,6 @@ export const NewAppointment = () => {
               <Datetime
                 value={false}
                 dateFormat="DD-MM-YYYY"
-                className="prueba"
                 timeFormat={false}
                 onChange={handleDateChange}
                 inputProps={{ readOnly: true, className: 'custom-input' }} />

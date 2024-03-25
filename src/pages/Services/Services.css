@@ -47,3 +47,9 @@
     justify-content: center;
     align-items: center;
 }
+
+.carousel-control-prev-icon, 
+.carousel-control-next-icon {
+    filter: invert(1);
+    
+  }

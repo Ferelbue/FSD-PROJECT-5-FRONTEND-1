@@ -8,6 +8,9 @@ import { Profile } from '../Profile/Profile';
 import { Appointments } from '../Appointments/Appointments';
 import { NewAppointment } from '../NewAppointment copy/NewAppointment';
 import { Services } from '../Services/Services';
+import { Users } from '../Users/Users';
+import { ProfileById } from '../ProfileById/ProfileById';
+import { AppointmentsById } from '../AppointmentsById/AppointmentsById';
 
 export const Body = () => {
 
@@ -22,6 +25,9 @@ export const Body = () => {
             <Route path="/appointments" element={<Appointments />} />
             <Route path="/newAppointment" element={<NewAppointment />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/users" element={<Users />} />
+            <Route path="/profileById/:userId" element={<ProfileById/>} />
+            <Route path="/appointmentsById/:userId" element={<AppointmentsById/>} />
         </Routes>
     )
 }

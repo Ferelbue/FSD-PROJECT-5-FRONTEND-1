@@ -28,11 +28,11 @@ export const Services = () => {
     fetchServices();
   }, []);
 
-  const chunkSize = 3;
-  const serviceChunks = [];
+  const carouselSize = 3;
+  const arrayServices = [];
   if (servicesData && servicesData.data) {
-    for (let i = 0; i < servicesData.data.length; i += chunkSize) {
-      serviceChunks.push(servicesData.data.slice(i, i + chunkSize));
+    for (let i = 0; i < servicesData.data.length; i += carouselSize) {
+      arrayServices.push(servicesData.data.slice(i, i + carouselSize));
     }
   }
   return (
@@ -40,10 +40,10 @@ export const Services = () => {
       <Header />
       <div className='servicesDesign'>
         <Carousel>
-          {serviceChunks.map((chunk, index) => (
-            <Carousel.Item key={index}>
+          {arrayServices.map((block, blockIndex) => (
+            <Carousel.Item key={blockIndex}>
               <div className="d-flex justify-content-around">
-                {chunk.map((service, serviceIndex) => (
+                {block.map((service, serviceIndex) => (
                   <Card key={serviceIndex} className="cardService">
                     <Card.Img className="imageCard" variant="top" src={service.image} />
                     <Card.Body>
