@@ -44,5 +44,6 @@
 .carousel-control-prev-icon, 
 .carousel-control-next-icon {
     border-radius: 50%;
-    border: 1px solid rgb(0, 0, 0);    
+    border: 1px solid rgb(0, 0, 0);
+    
   }

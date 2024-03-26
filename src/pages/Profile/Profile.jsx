@@ -60,7 +60,7 @@ export const Profile = () => {
 
         setTimeout(() => {
           setLoadedData(true);
-          
+
         }, 1000);
 
         // const parsedBirth = dayjs(fetched.data.birth).format("YYYY-MM-DD");
@@ -113,86 +113,96 @@ export const Profile = () => {
           </div>
         ) : (
           <div className="profileCardDesign">
-            <div className="userData">
-              <div className="inputFormat">
-                <div>
-                  <div className="inputTitle">NAME:</div>
+            <div className="cardUp">
+              <div className="userData">
+                <div className="inputFormat">
+                  <div>
+                    <div className="inputTitle">NAME:</div>
+                  </div>
+                  <div>
+                    <CustomInput
+                      className={`inputDesign ${userError.firstNameError !== "" ? "inputDesignError" : ""
+                        }`}
+                      type={"text"}
+                      placeholder={""}
+                      name={"firstName"}
+                      disabled={write}
+                      value={user.firstName || ""}
+                      onChangeFunction={(e) => inputHandler(e)}
+                      onBlurFunction={(e) => checkError(e)}
+                    />
+                    <div className="error">{userError.firstNameError}</div>
+                  </div>
                 </div>
-                <div>
-                  <CustomInput
-                    className={`inputDesign ${userError.firstNameError !== "" ? "inputDesignError" : ""
-                      }`}
-                    type={"text"}
-                    placeholder={""}
-                    name={"firstName"}
-                    disabled={write}
-                    value={user.firstName || ""}
-                    onChangeFunction={(e) => inputHandler(e)}
-                    onBlurFunction={(e) => checkError(e)}
-                  />
-                  <div className="error">{userError.firstNameError}</div>
+
+                <div className="inputFormat">
+                  <div>
+                    <div className="inputTitle">LAST NAME:</div>
+                  </div>
+                  <div>
+                    <CustomInput
+                      className={`inputDesign ${userError.lastNameError !== "" ? "inputDesignError" : ""
+                        }`}
+                      type={"text"}
+                      placeholder={""}
+                      name={"lastName"}
+                      disabled={write}
+                      value={user.lastName || ""}
+                      onChangeFunction={(e) => inputHandler(e)}
+                      onBlurFunction={(e) => checkError(e)}
+                    />
+                    <div className="error">{userError.lastNameError}</div>
+                  </div>
+                </div>
+
+                <div className="inputFormat">
+                  <div>
+                    <div className="inputTitle">PROFILE IMAGE:</div>
+                  </div>
+                  <div>
+                    <CustomInput
+                      className={`inputDesign ${userError.imageError !== "" ? "inputDesignError" : ""
+                        }`}
+                      type={"text"}
+                      placeholder={""}
+                      name={"image"}
+                      disabled={write}
+                      value={user.image || ""}
+                      onChangeFunction={(e) => inputHandler(e)}
+                      onBlurFunction={(e) => checkError(e)}
+                    />
+                    <div className="error">{userError.imageError}</div>
+                  </div>
+                </div>
+
+                <div className="inputFormat">
+                  <div>
+                    <div className="inputTitle">EMAIL:</div>
+                  </div>
+                  <div>
+                    <CustomInput
+                      className={`inputDesign ${userError.emailError !== "" ? "inputDesignError" : ""
+                        }`}
+                      type={"email"}
+                      placeholder={""}
+                      name={"email"}
+                      disabled={"disabled"}
+                      value={user.email || ""}
+                      onChangeFunction={(e) => inputHandler(e)}
+                      onBlurFunction={(e) => checkError(e)}
+                    />
+                    <div className="error">{userError.emailError}</div>
+                  </div>
                 </div>
               </div>
 
-              <div className="inputFormat">
-                <div>
-                  <div className="inputTitle">LAST NAME:</div>
-                </div>
-                <div>
-                  <CustomInput
-                    className={`inputDesign ${userError.lastNameError !== "" ? "inputDesignError" : ""
-                      }`}
-                    type={"text"}
-                    placeholder={""}
-                    name={"lastName"}
-                    disabled={write}
-                    value={user.lastName || ""}
-                    onChangeFunction={(e) => inputHandler(e)}
-                    onBlurFunction={(e) => checkError(e)}
-                  />
-                  <div className="error">{userError.lastNameError}</div>
-                </div>
+              <div className="userImage">
+                <div className="inputTitle">PROFILE IMAGE:</div>
+                <img className="imageFormat" src={user.image} alt="pers1" />
               </div>
+            </div>
 
-              <div className="inputFormat">
-                <div>
-                  <div className="inputTitle">PROFILE IMAGE:</div>
-                </div>
-                <div>
-                  <CustomInput
-                    className={`inputDesign ${userError.imageError !== "" ? "inputDesignError" : ""
-                      }`}
-                    type={"text"}
-                    placeholder={""}
-                    name={"image"}
-                    disabled={write}
-                    value={user.image || ""}
-                    onChangeFunction={(e) => inputHandler(e)}
-                    onBlurFunction={(e) => checkError(e)}
-                  />
-                  <div className="error">{userError.imageError}</div>
-                </div>
-              </div>
-
-              <div className="inputFormat">
-                <div>
-                  <div className="inputTitle">EMAIL:</div>
-                </div>
-                <div>
-                  <CustomInput
-                    className={`inputDesign ${userError.emailError !== "" ? "inputDesignError" : ""
-                      }`}
-                    type={"email"}
-                    placeholder={""}
-                    name={"email"}
-                    disabled={"disabled"}
-                    value={user.email || ""}
-                    onChangeFunction={(e) => inputHandler(e)}
-                    onBlurFunction={(e) => checkError(e)}
-                  />
-                  <div className="error">{userError.emailError}</div>
-                </div>
-              </div>
+            <div className="cardDown">
 
               <CustomButton
                 className={write === "" ? "cButtonGreen cButtonDesign" : "cButtonDesign"}
@@ -200,12 +210,6 @@ export const Profile = () => {
                 functionEmit={write === "" ? updateData : () => setWrite("")}
               />
             </div>
-
-            <div className="userImage">
-              <div className="inputTitle">PROFILE IMAGE:</div>
-              <img className="imageFormat" src={user.image} alt="pers1" />
-            </div>
-
 
           </div>
         )}

@@ -3,7 +3,6 @@
     min-width: 100%;
 
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
 
@@ -12,15 +11,19 @@
 
 
 .profileCardDesign {
-    height: 80vh;
-    width: 90vw;
+    height:80vh;
+    width: 50vw;
     border-radius: 1em;
     display: flex;
-    flex-direction: row;
+    flex-direction: column !important;
     justify-content: center;
     align-items: center;
 
-    background-color: rgb(221, 185, 193);
+    background-color: rgb(81, 77, 77);
+    box-shadow: 0 0 10px 0 black inset, 0 0 10px 2px black;
+    border-radius: 1em;
+    color: white;
+    font-size:large;
 }
 
 .img {
@@ -60,7 +63,7 @@
 }
 .userData{
     height: 80vh;
-    width: 45vw;
+    width: 20vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -69,7 +72,7 @@
 
 .userImage{
     height: 80vh;
-    width: 45vw;
+    width: 20vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -80,4 +83,21 @@
 
     height: 10em;
     width: 10em;
+}
+
+.cardUp{
+    height: 65vh;
+    width: 90vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardDown{
+    height: 15vh;
+    width: 90vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

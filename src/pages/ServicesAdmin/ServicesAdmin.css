@@ -31,8 +31,20 @@
     align-items: center;
 }
 
-.carousel-control-prev-icon, 
-.carousel-control-next-icon {
-    filter: invert(1);
+.linkAdmin {
+    text-decoration: none;
+    color: crimson;
+    font-weight: bold;
+}
+
+.linkAdmin:hover {
+    cursor: pointer;
     
-  }
+    transition: 0.4s;
+    color: white;
+    font-size: large;
+}
+.cardButtons{
+    margin-bottom: 1.2em;
+
+}

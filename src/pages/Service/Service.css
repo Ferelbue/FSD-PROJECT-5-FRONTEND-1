@@ -13,14 +13,12 @@
 
 .profileCardDesign {
     height: 80vh;
-    width: 90vw;
+    width: 70vw;
     border-radius: 1em;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-
-    background-color: rgb(221, 185, 193);
 }
 
 .img {
@@ -60,7 +58,7 @@
 }
 .userData{
     height: 80vh;
-    width: 45vw;
+    width: 35vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -69,7 +67,7 @@
 
 .userImage{
     height: 80vh;
-    width: 45vw;
+    width: 35vw;
     display: flex;
     flex-direction: column;
     justify-content: center;

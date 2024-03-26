@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import './Users.css';
 import { Header } from "../../common/Header/Header";
-import { GetServices, GetUsers, deleteUser } from "../../services/apiCalls";
-import Button from 'react-bootstrap/Button';
+import { GetUsers, deleteUser } from "../../services/apiCalls";
+
 import Card from 'react-bootstrap/Card';
 import Carousel from 'react-bootstrap/Carousel';
 import { Link, useNavigate } from "react-router-dom";
@@ -84,13 +84,15 @@ export const Users = () => {
                 {block.map((user, userIndex) => (
                   <Link to={`/profileById/${user.id}`} className="link">
                   <Card key={userIndex} className="cardUser">
-                    <Card.Img className="imageCard" variant="top" src={user.image} />
+                    <Card.Img className="imageCardUser" variant="top" src={user.image} />
                     <Card.Body>
                       <Card.Title className="textCard">{user.firstName}</Card.Title>
                       <Card.Text className="textCard">{user.email}</Card.Text>
                     </Card.Body>
-                    <Link to={`/appointmentsById/${user.id}`} className="linkAppointments">APPOINTMENTS</Link>
+                    <div className="cardButtons">
+                    <Link to={`/appointmentsById/${user.id}`} className="linkAdmin">APPOINTMENTS</Link>
                     <CustomDelete title={`DELETE USER`} onClick={() => handleDelete(user.id)} />
+                    </div>
                   </Card>
                   </Link>
                 ))}
