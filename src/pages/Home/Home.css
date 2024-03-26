@@ -16,3 +16,8 @@
     height: 84vh;
     width: 100vw;
 }
+.carouselVideo {
+    height: 84vh;
+    width: 100vw;
+    object-fit: cover;
+}

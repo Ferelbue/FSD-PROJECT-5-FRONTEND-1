@@ -44,9 +44,9 @@ export const Services = () => {
               <div className="d-flex justify-content-around">
                 {block.map((service, serviceIndex) => (
                   <Card key={serviceIndex} className="cardService">
-                    <Card.Img className="imageCard" variant="top" src={service.image} />
+                    <Card.Img className="imageCard" src={service.image} />
                     <Card.Body>
-                      <Card.Title>{service.serviceName}</Card.Title>
+                      <Card.Title>{service.serviceName.toUpperCase()}</Card.Title>
                       <Card.Text>{service.description}</Card.Text>
                     </Card.Body>
                   </Card>

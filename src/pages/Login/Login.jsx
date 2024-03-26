@@ -62,22 +62,22 @@ export const Login = () => {
 
       if (fetched) {
         const decodificado = decodeToken(fetched.token);
-      
-      const passport = {
-        token: fetched.token,
-        decodificado: decodificado,
-      };
 
-      localStorage.setItem("passport", JSON.stringify(passport));
+        const passport = {
+          token: fetched.token,
+          decodificado: decodificado,
+        };
 
-      setMsgError(
-        `WELCOME BACK ${(decodificado.userName).toUpperCase()}`
-      );
-    }
+        localStorage.setItem("passport", JSON.stringify(passport));
+
+        setMsgError(
+          `WELCOME BACK ${(decodificado.userName).toUpperCase()}`
+        );
+      }
       setTimeout(() => {
         navigate("/");
       }, 2000);
-    
+
 
     } catch (error) {
       console.log(error);
@@ -93,35 +93,37 @@ export const Login = () => {
     <>
       <Header />
       <div className="loginDesign">
-        <CustomInput
-          className={`inputDesign ${credencialesError.emailError !== "" ? "inputDesignError" : ""
-            }`}
-          type={"email"}
-          placeholder={"email"}
-          name={"email"}
-          value={credenciales.email || ""}
-          onChangeFunction={(e) => inputHandler(e)}
-          onBlurFunction={(e) => checkError(e)}
-        />
-        <div className="error">{credencialesError.emailError}</div>
-        <CustomInput
-          className={`inputDesign ${credencialesError.passwordError !== "" ? "inputDesignError" : ""
-            }`}
-          type={"password"}
-          placeholder={"password"}
-          name={"password"}
-          value={credenciales.password || ""}
-          onChangeFunction={(e) => inputHandler(e)}
-          onBlurFunction={(e) => checkError(e)}
-        />
-        <div className="error">{credencialesError.passwordError}</div>
+        <div className="cardLoginDesign">
+          <CustomInput
+            className={`inputDesign ${credencialesError.emailError !== "" ? "inputDesignError" : ""
+              }`}
+            type={"email"}
+            placeholder={"Email..."}
+            name={"email"}
+            value={credenciales.email || ""}
+            onChangeFunction={(e) => inputHandler(e)}
+            onBlurFunction={(e) => checkError(e)}
+          />
+          <div className="error">{credencialesError.emailError}</div>
+          <CustomInput
+            className={`inputDesign ${credencialesError.passwordError !== "" ? "inputDesignError" : ""
+              }`}
+            type={"password"}
+            placeholder={"Password..."}
+            name={"password"}
+            value={credenciales.password || ""}
+            onChangeFunction={(e) => inputHandler(e)}
+            onBlurFunction={(e) => checkError(e)}
+          />
+          <div className="error">{credencialesError.passwordError}</div>
 
-        <CustomButton
-          className={"cButtonDesign"}
-          title={"Login"}
-          functionEmit={loginMe}
-        />
-        <div className="error">{msgError}</div>
+          <CustomButton
+            className={"cButtonDesign"}
+            title={"Login"}
+            functionEmit={loginMe}
+          />
+          <div className="error">{msgError}</div>
+        </div>
       </div>
     </>
   );

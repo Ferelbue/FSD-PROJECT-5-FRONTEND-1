@@ -18,7 +18,17 @@ export const Header = () => {
 
           <Navbar expand="lg" className="headerDesign bg-body-tertiary" style={{ padding: '0em' }}>
             <Container>
-              <Navbar.Brand href="#home" ><CustomLink title="LOGO" destination="/" /></Navbar.Brand>
+              <Navbar.Brand href="#home">
+                <a href="/">
+                  <img
+                    src="../../../img/logo2.png"
+                    width="60"
+                    height="60"
+                    className="d-inline-block align-top"
+                    alt="React Bootstrap logo"
+                  />
+                </a>
+              </Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ms-auto" >
@@ -35,7 +45,17 @@ export const Header = () => {
             //ADMIN
             <Navbar expand="lg" className="headerDesign bg-body-tertiary" style={{ padding: '0em' }}>
               <Container>
-                <Navbar.Brand href="#home" ><CustomLink title="LOGO" destination="/" /></Navbar.Brand>
+                <Navbar.Brand href="#home">
+                  <a href="/">
+                    <img
+                      src="../../../img/logo2.png"
+                      width="60"
+                      height="60"
+                      className="d-inline-block align-top"
+                      alt="React Bootstrap logo"
+                    />
+                  </a>
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                   <Nav className="ms-auto" >
@@ -53,7 +73,17 @@ export const Header = () => {
             <div className="menu">
               <Navbar expand="lg" className="headerDesign bg-body-tertiary" style={{ padding: '0em' }}>
                 <Container>
-                  <Navbar.Brand href="#home"><CustomLink title="LOGO" destination="/" /></Navbar.Brand>
+                  <Navbar.Brand href="#home">
+                    <a href="/">
+                      <img
+                        src="../../../img/logo2.png"
+                        width="60"
+                        height="60"
+                        className="d-inline-block align-top"
+                        alt="React Bootstrap logo"
+                      />
+                    </a>
+                  </Navbar.Brand>
                   <Navbar.Toggle aria-controls="basic-navbar-nav" />
                   <Navbar.Collapse id="basic-navbar-nav" >
                     <Nav className="ms-auto">
@@ -70,7 +100,17 @@ export const Header = () => {
           <div className="menu">
             <Navbar expand="lg" className="headerDesign bg-body-tertiary" style={{ padding: '0em' }}>
               <Container>
-                <Navbar.Brand href="#home"><CustomLink title="LOGO" destination="/" /></Navbar.Brand>
+                <Navbar.Brand href="#home">
+                  <a href="/">
+                    <img
+                      src="../../../img/logo2.png"
+                      width="60"
+                      height="60"
+                      className="d-inline-block align-top"
+                      alt="React Bootstrap logo"
+                    />
+                  </a>
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" >
                   <Nav className="ms-auto">

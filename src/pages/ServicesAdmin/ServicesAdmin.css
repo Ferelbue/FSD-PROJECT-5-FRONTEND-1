@@ -6,23 +6,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(rgb(219, 219, 219), black 99%);
-}
-
-.appointmentsCardDesign {
-    height: 30vh;
-    width: 90vw;
-    border-radius: 1em;
-    background-color: crimson !important;
-    opacity: 90%;
-
-    color:black;
-    display: flex;
-    flex-direction: row !important;
-    justify-content: center;
-    align-items: center;
-    margin: 0.5em;
-    font-size:1.4vw !important;
+    background-image: url(../../img/header.jpg);
 }
 
 .imageCard{
@@ -40,7 +24,7 @@
 }
 .cardService{
     width: 20em;
-    height: 30em;
+    height: 35em;
     margin: 0.5em;
     display: flex;
     justify-content: center;

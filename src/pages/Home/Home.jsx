@@ -11,39 +11,33 @@ export const Home = () => {
             <section className='homeDesign'>
 
                 <Carousel>
-                    <Carousel.Item>
-                        <img
-                            className="d-block carouselImage"
-                            src="https://static.vecteezy.com/system/resources/previews/028/595/021/non_2x/modern-and-creative-tattoo-parlor-with-a-chair-brutal-interior-design-photo.jpg"
-                            alt="First slide"
-                        />
+                    <Carousel.Item interval={6000}>
+                        <video className="d-block carouselVideo" loop autoPlay muted >
+                            <source src="../../../img/videoHome2.mp4" type="video/mp4" />
+                        </video>
                         <Carousel.Caption>
-                            <h5>First slide label</h5>
-                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                            <h5></h5>
+                            <p></p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                    <Carousel.Item interval={3000}>
+                        <video className="d-block carouselVideo" loop autoPlay muted >
+                            <source src="../../../img/videoHome3.mp4" type="video/mp4" />
+                        </video>
+                        <Carousel.Caption>
+                            <h5></h5>
+                            <p></p>
                         </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item>
                         <img
                             className="d-block carouselImage"
-                            src="https://pics.craiyon.com/2023-12-20/TDG1WuvzQEa1yQhB8EkV_g.webp"
-                            alt="Second slide"
-                        />
-                        <Carousel.Caption>
-                            <h5>Second slide label</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </Carousel.Caption>
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        <img
-                            className="d-block carouselImage"
-                            src="https://www.tattooboxmontreal.com/wp-content/uploads/2023/11/BDEA60AC-82EB-4AC8-BAF8-0CF637521086.jpeg"
+                            src="../../../img/home3.png"
                             alt="Third slide"
                         />
                         <Carousel.Caption>
-                            <h5>Third slide label</h5>
-                            <p>
-                                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-                            </p>
+                            <h5></h5>
+                            <p></p>
                         </Carousel.Caption>
                     </Carousel.Item>
                 </Carousel>
