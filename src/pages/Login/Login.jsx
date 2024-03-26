@@ -8,9 +8,9 @@ import { useNavigate } from "react-router-dom";
 import { decodeToken } from "react-jwt";
 import { Header } from "../../common/Header/Header";
 
-const datosUser = JSON.parse(localStorage.getItem("passport"));
 
 export const Login = () => {
+  const datosUser = JSON.parse(localStorage.getItem("passport"));
   const navigate = useNavigate();
 
   const [tokenStorage, setTokenStorage] = useState(datosUser?.token);
@@ -68,7 +68,7 @@ export const Login = () => {
       };
 
       localStorage.setItem("passport", JSON.stringify(passport));
-      console.log(decodificado)
+
       setMsgError(
         `WELCOME BACK ${(decodificado.userName).toUpperCase()}`
       );
@@ -77,8 +77,9 @@ export const Login = () => {
         navigate("/");
       }, 2000);
 
-    } catch (error) {
-      setMsgError(error.message);
+    } catch (error) { 
+      console.log(error);
+      setMsgError(error);
     }
   };
 

@@ -4,7 +4,7 @@ import './LogOut.css'
 
 export const LogOut = () => {
 
-   localStorage.setItem("passport", JSON.stringify(""))
+   localStorage.removeItem("passport")
    // const token = localStorage.getItem("token");
 
 

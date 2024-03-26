@@ -1,17 +1,18 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-import "./Profile.css";
-import { GetProfile, LoginUser, UpdateProfile } from "../../services/apiCalls";
+import "./ProfileById.css";
+import { GetProfile, LoginUser, UpdateProfile, getUserById, updateUserProfile } from "../../services/apiCalls";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import { Header } from "../../common/Header/Header";
 import { CustomButton } from "../../common/CustomButton/CustomButton";
 import { validame } from "../../utils/functions";
 import Spinner from 'react-bootstrap/Spinner';
+import { useParams } from 'react-router-dom';
 
-
-export const Profile = () => {
+export const ProfileById = () => {
   const datosUser = JSON.parse(localStorage.getItem("passport"));
   const navigate = useNavigate();
+  const { userId } = useParams();
 
   const [write, setWrite] = useState("disabled");
   const [tokenStorage, setTokenStorage] = useState(datosUser?.token);
@@ -56,7 +57,7 @@ export const Profile = () => {
   useEffect(() => {
     const getUserProfile = async () => {
       try {
-        const fetched = await GetProfile(tokenStorage);
+        const fetched = await getUserById(userId,tokenStorage);
 
         setTimeout(() => {
           setLoadedData(true);
@@ -66,10 +67,10 @@ export const Profile = () => {
         // const parsedBirth = dayjs(fetched.data.birth).format("YYYY-MM-DD");
 
         setUser({
-          firstName: fetched.data[0].firstName,
-          lastName: fetched.data[0].lastName,
-          image: fetched.data[0].image,
-          email: fetched.data[0].email,
+          firstName: fetched.data.firstName,
+          lastName: fetched.data.lastName,
+          image: fetched.data.image,
+          email: fetched.data.email,
         });
 
       } catch (error) {
@@ -85,7 +86,7 @@ export const Profile = () => {
   const updateData = async () => {
 
     try {
-      const fetched = await UpdateProfile(tokenStorage, user)
+      const fetched = await updateUserProfile(tokenStorage,userId,user)
       setUser({
         firstName: fetched.data.firstName,
         lastName: fetched.data.lastName,

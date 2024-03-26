@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router";
-import "./Profile.css";
-import { GetProfile, LoginUser, UpdateProfile } from "../../services/apiCalls";
+import { useNavigate, useParams } from "react-router-dom";
+import "./Service.css";
+import { GetProfile, GetServices, LoginUser, UpdateProfile, getServiceById, updateService } from "../../services/apiCalls";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import { Header } from "../../common/Header/Header";
 import { CustomButton } from "../../common/CustomButton/CustomButton";
@@ -9,29 +9,27 @@ import { validame } from "../../utils/functions";
 import Spinner from 'react-bootstrap/Spinner';
 
 
-export const Profile = () => {
+export const Service = () => {
   const datosUser = JSON.parse(localStorage.getItem("passport"));
   const navigate = useNavigate();
-
+  const { serviceId } = useParams();
   const [write, setWrite] = useState("disabled");
   const [tokenStorage, setTokenStorage] = useState(datosUser?.token);
   const [loadedData, setLoadedData] = useState(false);
 
-  const [user, setUser] = useState({
-    firstName: "",
-    lastName: "",
+  const [service, setService] = useState({
+    serviceName: "",
+    description: "",
     image: "",
-    email: "",
   });
-  const [userError, setUserError] = useState({
-    firstNameError: "",
-    lastNameError: "",
+  const [serviceError, setServiceError] = useState({
+    serviceNameError: "",
+    descriptionError: "",
     imageError: "",
-    emailError: "",
   });
 
   const inputHandler = (e) => {
-    setUser((prevState) => ({
+    setService((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
@@ -40,7 +38,7 @@ export const Profile = () => {
   const checkError = (e) => {
     const error = validame(e.target.name, e.target.value);
 
-    setUserError((prevState) => ({
+    setServiceError((prevState) => ({
       ...prevState,
       [e.target.name + "Error"]: error,
 
@@ -54,22 +52,19 @@ export const Profile = () => {
   }, [tokenStorage]);
 
   useEffect(() => {
-    const getUserProfile = async () => {
+    const getService = async () => {
       try {
-        const fetched = await GetProfile(tokenStorage);
+        const fetched = await getServiceById(serviceId, tokenStorage);
 
         setTimeout(() => {
           setLoadedData(true);
-          
+
         }, 1000);
 
-        // const parsedBirth = dayjs(fetched.data.birth).format("YYYY-MM-DD");
-
-        setUser({
-          firstName: fetched.data[0].firstName,
-          lastName: fetched.data[0].lastName,
-          image: fetched.data[0].image,
-          email: fetched.data[0].email,
+        setService({
+          serviceName: fetched.data.serviceName,
+          description: fetched.data.description,
+          image: fetched.data.image,
         });
 
       } catch (error) {
@@ -78,19 +73,19 @@ export const Profile = () => {
     };
 
     if (!loadedData) {
-      getUserProfile();
+      getService();
     }
-  }, [user]);
+  }, [service]);
 
   const updateData = async () => {
 
     try {
-      const fetched = await UpdateProfile(tokenStorage, user)
-      setUser({
-        firstName: fetched.data.firstName,
-        lastName: fetched.data.lastName,
+      const fetched = await updateService(tokenStorage, serviceId, service)
+
+      setService({
+        serviceName: fetched.data.serviceName,
+        description: fetched.data.description,
         image: fetched.data.image,
-        email: fetched.data.email,
       })
 
       setWrite("disabled")
@@ -116,81 +111,61 @@ export const Profile = () => {
             <div className="userData">
               <div className="inputFormat">
                 <div>
-                  <div className="inputTitle">NAME:</div>
+                  <div className="inputTitle">SERVICE NAME:</div>
                 </div>
                 <div>
                   <CustomInput
-                    className={`inputDesign ${userError.firstNameError !== "" ? "inputDesignError" : ""
+                    className={`inputDesign ${serviceError.serviceNameError !== "" ? "inputDesignError" : ""
                       }`}
                     type={"text"}
                     placeholder={""}
-                    name={"firstName"}
+                    name={"serviceName"}
                     disabled={write}
-                    value={user.firstName || ""}
+                    value={service.serviceName || ""}
                     onChangeFunction={(e) => inputHandler(e)}
                     onBlurFunction={(e) => checkError(e)}
                   />
-                  <div className="error">{userError.firstNameError}</div>
+                  <div className="error">{serviceError.serviceNameError}</div>
                 </div>
               </div>
 
               <div className="inputFormat">
                 <div>
-                  <div className="inputTitle">LAST NAME:</div>
+                  <div className="inputTitle">DESCRIPTION:</div>
                 </div>
                 <div>
                   <CustomInput
-                    className={`inputDesign ${userError.lastNameError !== "" ? "inputDesignError" : ""
+                    className={`inputDesign ${serviceError.descriptionError !== "" ? "inputDesignError" : ""
                       }`}
                     type={"text"}
                     placeholder={""}
-                    name={"lastName"}
+                    name={"description"}
                     disabled={write}
-                    value={user.lastName || ""}
+                    value={service.description || ""}
                     onChangeFunction={(e) => inputHandler(e)}
                     onBlurFunction={(e) => checkError(e)}
                   />
-                  <div className="error">{userError.lastNameError}</div>
+                  <div className="error">{serviceError.descriptionError}</div>
                 </div>
               </div>
 
               <div className="inputFormat">
                 <div>
-                  <div className="inputTitle">PROFILE IMAGE:</div>
+                  <div className="inputTitle">SERVICE IMAGE:</div>
                 </div>
                 <div>
                   <CustomInput
-                    className={`inputDesign ${userError.imageError !== "" ? "inputDesignError" : ""
+                    className={`inputDesign ${serviceError.imageError !== "" ? "inputDesignError" : ""
                       }`}
                     type={"text"}
                     placeholder={""}
                     name={"image"}
                     disabled={write}
-                    value={user.image || ""}
+                    value={service.image || ""}
                     onChangeFunction={(e) => inputHandler(e)}
                     onBlurFunction={(e) => checkError(e)}
                   />
-                  <div className="error">{userError.imageError}</div>
-                </div>
-              </div>
-
-              <div className="inputFormat">
-                <div>
-                  <div className="inputTitle">EMAIL:</div>
-                </div>
-                <div>
-                  <CustomInput
-                    className={`inputDesign ${userError.emailError !== "" ? "inputDesignError" : ""
-                      }`}
-                    type={"email"}
-                    placeholder={""}
-                    name={"email"}
-                    disabled={"disabled"}
-                    value={user.email || ""}
-                    onChangeFunction={(e) => inputHandler(e)}
-                    onBlurFunction={(e) => checkError(e)}
-                  />
-                  <div className="error">{userError.emailError}</div>
+                  <div className="error">{serviceError.imageError}</div>
                 </div>
               </div>
 
@@ -202,8 +177,8 @@ export const Profile = () => {
             </div>
 
             <div className="userImage">
-              <div className="inputTitle">PROFILE IMAGE:</div>
-              <img className="imageFormat" src={user.image} alt="pers1" />
+              <div className="inputTitle">SERVICE IMAGE:</div>
+              <img className="imageFormat" src={service.image} alt="service" />
             </div>
 
 

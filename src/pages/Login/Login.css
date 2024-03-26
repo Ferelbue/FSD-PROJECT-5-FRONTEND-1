@@ -3,7 +3,8 @@
     height: 88vh;
     min-width: 100%;
     
-    background-color: rgb(211, 220, 229);
+    background: linear-gradient(rgb(219, 219, 219), black 99%);
+
 
     display: flex;
     flex-direction: column;

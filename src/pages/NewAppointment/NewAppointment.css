@@ -1,0 +1,29 @@
+.newappointmentsDesign {
+    
+    min-height: 90em;
+    min-width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: start;
+
+    background: linear-gradient(rgb(219, 219, 219), black 99%);
+}
+
+
+.cardNewAppointment{
+    width:50em;
+    height: 90em;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: start;
+
+    margin-top: 2em;
+    padding: 1em;
+    border-radius: 1em;
+    background-color: bisque;
+    
+}

@@ -1,13 +1,18 @@
 .homeDesign {
 
-    height: 88vh;
+    height: 84vh;
     max-width: 100%;
 
-    background-color: rgb(211, 220, 229);
-
+    background-image: url(../../img/header.jpg);
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     color: black;
+}
+
+.carouselImage {
+    height: 84vh;
+    width: 100vw;
 }
