@@ -60,8 +60,9 @@ export const Login = () => {
 
       const fetched = await LoginUser(credenciales);
 
-      const decodificado = decodeToken(fetched.token);
-
+      if (fetched) {
+        const decodificado = decodeToken(fetched.token);
+      
       const passport = {
         token: fetched.token,
         decodificado: decodificado,
@@ -72,14 +73,19 @@ export const Login = () => {
       setMsgError(
         `WELCOME BACK ${(decodificado.userName).toUpperCase()}`
       );
-
+    }
       setTimeout(() => {
         navigate("/");
       }, 2000);
+    
 
-    } catch (error) { 
+    } catch (error) {
       console.log(error);
-      setMsgError(error);
+      setMsgError(`Error: ${error.message}`);
+
+      setTimeout(() => {
+        navigate("/");
+      }, 4000);
     }
   };
 

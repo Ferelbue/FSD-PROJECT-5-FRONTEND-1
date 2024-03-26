@@ -38,13 +38,13 @@ export const LoginUser = async (credenciales) => {
 
     const data = await response.json();
 
-    if (!data.success) {
+    if (!response.ok) {
       throw new Error(data.message);
     }
 
     return data;
   } catch (error) {
-    return error;
+    throw new Error(error.message);
   }
 };
 
