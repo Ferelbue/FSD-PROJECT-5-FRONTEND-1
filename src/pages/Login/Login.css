@@ -3,7 +3,7 @@
     height: 88vh;
     min-width: 100%;
     
-    background: linear-gradient(rgb(219, 219, 219), black 99%);
+    background-image: url(../../img/header.jpg);
 
 
     display: flex;
@@ -15,4 +15,18 @@
 .error {
     height: 1em;
     color: red;
+}
+
+.cardLoginDesign{
+    height: 19em;
+    width: 21em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: black;
+    box-shadow: 0 0 10px 0 black inset, 0 0 40px 2px black;
+    border-radius: 1em;
 }

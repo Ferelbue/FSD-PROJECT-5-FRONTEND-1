@@ -64,9 +64,11 @@ export const ServicesAdmin = () => {
                     <Card.Body>
                       <Card.Title>{service.serviceName}</Card.Title>
                       <Card.Text>{service.description}</Card.Text>
-                      <CustomDelete title={`DELETE SERVICE`} onClick={() => handleDelete(service.id)} />
-                      <Link to={`/serviceById/${service.id}`} className="linkAppointments">UPDATE APPOINTMENT</Link>
                     </Card.Body>
+                    <div className="cardButtons">
+                    <CustomDelete className="linkAdmin" title={`DELETE SERVICE`} onClick={() => handleDelete(service.id)} />
+                    <Link to={`/serviceById/${service.id}`} className="linkAdmin">UPDATE SERVICE</Link>
+                    </div>
                   </Card>
                 ))}
               </div>

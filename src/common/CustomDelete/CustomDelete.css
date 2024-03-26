@@ -1,18 +1,13 @@
 
-.likeDesign {
-
+.linkAdmin {
+    text-decoration: none;
+    color: crimson;
     font-weight: bold;
-    color: rgb(0, 0, 0);
-
-    transition: 0.4s;
-    margin: 1em;
-    /* width: 5em; */
 }
 
-.likeDesign:hover {
+.linkAdmin:hover {
     cursor: pointer;
     
     transition: 0.4s;
-    color: rgb(255, 0, 0);
-    font-size: large;
+    color: black !important;
 }

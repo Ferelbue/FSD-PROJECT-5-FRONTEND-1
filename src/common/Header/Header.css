@@ -2,7 +2,7 @@
     height: auto;
     min-width: 100%;
 
-    background-image: url(../../img/header.jpg);
+    background-image: url(../../../img/header.jpg);
     
     display: flex;
     flex-direction: row;

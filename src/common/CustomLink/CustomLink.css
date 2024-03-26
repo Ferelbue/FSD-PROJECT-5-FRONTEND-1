@@ -1,4 +1,3 @@
-
 .navigateDesign {
 
     font-weight: bold;
@@ -6,13 +5,15 @@
 
     transition: 0.4s;
     margin: 1em;
+    -webkit-transition: all .15s ease-in-out;
+    transition: all .15s ease-in-out;
     /* width: 5em; */
 }
 
 .navigateDesign:hover {
+
     cursor: pointer;
-    
-    transition: 0.4s;
+    transition: 0.2s;
+    text-shadow: crimson 0.1em 0 0.8em;
     color: crimson;
-translate: 0 -0.5em;
 }

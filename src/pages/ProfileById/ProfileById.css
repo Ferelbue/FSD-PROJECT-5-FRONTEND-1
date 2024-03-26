@@ -7,20 +7,19 @@
     justify-content: center;
     align-items: center;
 
-    background: linear-gradient(rgb(219, 219, 219), black 99%);
+    background-image: url(../../img/header.jpg);
 }
 
 
 .profileCardDesign {
     height: 80vh;
-    width: 90vw;
+    width: 50vw;
     border-radius: 1em;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 
-    background-color: rgb(221, 185, 193);
 }
 
 .img {
@@ -60,7 +59,7 @@
 }
 .userData{
     height: 80vh;
-    width: 45vw;
+    width: 35vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -69,7 +68,7 @@
 
 .userImage{
     height: 80vh;
-    width: 45vw;
+    width: 35vw;
     display: flex;
     flex-direction: column;
     justify-content: center;

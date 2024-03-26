@@ -7,7 +7,7 @@ export const validame = (type, value) => {
     case "lastName":
     case "cognom":
       if (value.length < 3) {
-        return "Por favor, el nombre debe de tener mínimo tres caracteres.";
+        return "Please, name must contain at least 3 characters.";
       }
 
       return "";
@@ -15,7 +15,7 @@ export const validame = (type, value) => {
     case "image":
 
       if (value.length < 3) {
-        return "Por favor, la imagen debe de tener mínimo tres caracteres.";
+        return "Please, insert a valid image.";
       }
 
       return "";
@@ -28,7 +28,7 @@ export const validame = (type, value) => {
       const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
       if (!emailRegex.test(value)) {
-        return "Por favor, el formato del email debe de ser correcto.";
+        return "Please, introduce a valid email.";
       }
 
       return "";
@@ -37,7 +37,7 @@ export const validame = (type, value) => {
     case "contraseña":
       const passwordRegex = /^.{6,}$/;
       if (!passwordRegex.test(value)) {
-        return "El password debe tener 6 caracteres, simbolo y mayúscula";
+        return "Password must contain at least 6 characters";
       }
 
       return "";

@@ -15,20 +15,30 @@
     align-items: center;
     margin: 1em;
     cursor: pointer;
+
+    background-color: black;
+    border: 3px solid crimson;
+    border-radius: 50px;
+    -webkit-transition: all .15s ease-in-out;
+    transition: all .15s ease-in-out;
+    color: crimson;
 }
 
 .cButtonDesign:hover {
 
     cursor: pointer;
     transition: 0.2s;
-    background-color: darkred;
+    box-shadow: 0 0 20px 0 crimson inset, 0 0 40px 2px crimson;
+    border: 3px solid crimson;
 }
 .cButtonGreen {
-    background-color: green;
+    border: 3px solid greenyellow;
+    color: greenyellow;
 }
 
 .cButtonGreen:hover {
-    background-color: darkgreen;
+    box-shadow: 0 0 10px 0 greenyellow inset, 0 0 20px 2px greenyellow;
+    border: 3px solid greenyellow;
 }
 .buttonAppointment{
     height: 3em;

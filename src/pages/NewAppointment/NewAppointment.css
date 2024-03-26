@@ -8,7 +8,7 @@
     justify-content: space-around;
     align-items: start;
 
-    background: linear-gradient(rgb(219, 219, 219), black 99%);
+    background-image: url(../../img/header.jpg);
 }
 
 
