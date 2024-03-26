@@ -13,13 +13,12 @@ export const Services = () => {
 
 
   useEffect(() => {
-    console.log('HOLA')
     const fetchServices = async () => {
       try {
 
         const data = await GetServices();
         setServicesData(data);
-        console.log(data)
+        
       } catch (error) {
         setError(error);
       }

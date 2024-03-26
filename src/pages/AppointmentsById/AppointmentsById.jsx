@@ -21,7 +21,7 @@ export const AppointmentsById = () => {
       try {
         const data = await getAppointmentsById(token.token, userId);
         setAppoinmentsData(data);
-        console.log(data)
+
         setTimeout(() => {
           setLoadedData(true);
 
@@ -37,11 +37,9 @@ export const AppointmentsById = () => {
 
   const handleDelete = async (appointmentId) => {
     try {
-      // Realizar una solicitud PUT a la base de datos para actualizar el post con el like
-      console.log(appointmentId)
+
       await deleteAppointment(appointmentId, token.token);
 
-      // Actualizar los datos de los posts después de la actualización exitosa
       const updatedAppointmentData = await GetAppointments(token.token);
       setAppoinmentsData(updatedAppointmentData);
 

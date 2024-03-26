@@ -56,7 +56,6 @@ export const Profile = () => {
   useEffect(() => {
     const getUserProfile = async () => {
       try {
-        console.log(tokenStorage)
         const fetched = await GetProfile(tokenStorage);
 
         setTimeout(() => {

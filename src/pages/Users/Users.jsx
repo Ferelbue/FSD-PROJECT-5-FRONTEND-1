@@ -21,7 +21,6 @@ export const Users = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        console.log(tokenStorage)
         const data = await GetUsers(tokenStorage);
         setUsersData(data);
 

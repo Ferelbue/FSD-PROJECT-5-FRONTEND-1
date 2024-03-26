@@ -12,10 +12,11 @@ import { Users } from '../Users/Users';
 import { ProfileById } from '../ProfileById/ProfileById';
 import { AppointmentsById } from '../AppointmentsById/AppointmentsById';
 import { ServicesAdmin } from '../ServicesAdmin/ServicesAdmin';
+import { Service } from '../Service/Service';
 
 export const Body = () => {
 
-    return(
+    return (
         <Routes>
             <Route path="*" element={<Navigate to={"/"} replace />} />
             <Route path="/" element={<Home />} />
@@ -27,9 +28,10 @@ export const Body = () => {
             <Route path="/newAppointment" element={<NewAppointment />} />
             <Route path="/services" element={<Services />} />
             <Route path="/users" element={<Users />} />
-            <Route path="/profileById/:userId" element={<ProfileById/>} />
-            <Route path="/appointmentsById/:userId" element={<AppointmentsById/>} />
+            <Route path="/profileById/:userId" element={<ProfileById />} />
+            <Route path="/appointmentsById/:userId" element={<AppointmentsById />} />
             <Route path="/servicesAdmin" element={<ServicesAdmin />} />
+            <Route path="/serviceById/:serviceId" element={<Service />} />
         </Routes>
     )
 }

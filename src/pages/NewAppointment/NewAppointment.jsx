@@ -28,7 +28,7 @@ export const NewAppointment = () => {
       try {
         const data = await GetServices();
         setServiceData(data);
-        console.log(data);
+
       } catch (error) {
         setError(error);
       }
@@ -56,11 +56,8 @@ export const NewAppointment = () => {
         appointmentDate: date
       };
 
-      console.log(appointmentSend);
-
       const fetched = await CreateAppointment(tokenStorage,appointmentSend);
 
-      console.log(fetched)
       setError(fetched.message);
 
       setTimeout(() => {

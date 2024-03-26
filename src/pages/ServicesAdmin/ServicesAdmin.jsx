@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import './ServicesAdmin.css';
 import { Header } from "../../common/Header/Header";
 import { GetServices, deleteService } from "../../services/apiCalls";
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Carousel from 'react-bootstrap/Carousel';
 import { CustomDelete } from "../../common/CustomDelete/CustomDelete";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const ServicesAdmin = () => {
   const datosUser = JSON.parse(localStorage.getItem("passport"));
@@ -66,7 +65,7 @@ export const ServicesAdmin = () => {
                       <Card.Title>{service.serviceName}</Card.Title>
                       <Card.Text>{service.description}</Card.Text>
                       <CustomDelete title={`DELETE SERVICE`} onClick={() => handleDelete(service.id)} />
-                      {/* <CustomDelete title={`UPDATE SERVICE`} onClick={() => handleDelete(service.id)} /> */}
+                      <Link to={`/serviceById/${service.id}`} className="linkAppointments">UPDATE APPOINTMENT</Link>
                     </Card.Body>
                   </Card>
                 ))}
