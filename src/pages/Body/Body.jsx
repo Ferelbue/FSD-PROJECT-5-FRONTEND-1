@@ -6,7 +6,7 @@ import { Register } from '../Register/Register';
 import { LogOut } from '../LogOut/LogOut';
 import { Profile } from '../Profile/Profile';
 import { Appointments } from '../Appointments/Appointments';
-import { NewAppointment } from '../NewAppointment copy/NewAppointment';
+import { NewAppointment } from '../NewAppointment/NewAppointment';
 import { Services } from '../Services/Services';
 import { Users } from '../Users/Users';
 import { ProfileById } from '../ProfileById/ProfileById';
