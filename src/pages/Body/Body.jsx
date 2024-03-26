@@ -11,6 +11,7 @@ import { Services } from '../Services/Services';
 import { Users } from '../Users/Users';
 import { ProfileById } from '../ProfileById/ProfileById';
 import { AppointmentsById } from '../AppointmentsById/AppointmentsById';
+import { ServicesAdmin } from '../ServicesAdmin/ServicesAdmin';
 
 export const Body = () => {
 
@@ -28,6 +29,7 @@ export const Body = () => {
             <Route path="/users" element={<Users />} />
             <Route path="/profileById/:userId" element={<ProfileById/>} />
             <Route path="/appointmentsById/:userId" element={<AppointmentsById/>} />
+            <Route path="/servicesAdmin" element={<ServicesAdmin />} />
         </Routes>
     )
 }

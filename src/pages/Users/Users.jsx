@@ -55,11 +55,9 @@ export const Users = () => {
 
   const handleDelete = async (userId) => {
     try {
-      // Realizar una solicitud PUT a la base de datos para actualizar el post con el like
-      console.log(userId)
+
       await deleteUser(userId, tokenStorage);
 
-      // Actualizar los datos de los posts después de la actualización exitosa
       const updatedUsersData = await GetUsers(tokenStorage);
       setUsersData(updatedUsersData);
       

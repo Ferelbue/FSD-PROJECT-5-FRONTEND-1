@@ -297,3 +297,22 @@ export const getAppointmentsById = async (token,userId) => {
     throw error;
   }
 };
+
+export const deleteService = async (serviceId, token) => {
+  try {
+    const response = await fetch(`${root}services/${serviceId}`, {
+      method: 'DELETE',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+    });
+    if (!response.ok) {
+      throw new Error('No se pudo eliminar el servicio');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Error al actualizar el servicio:', error);
+    throw error;
+  }
+};
