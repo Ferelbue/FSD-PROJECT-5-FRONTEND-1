@@ -3,7 +3,6 @@ import './AppointmentsById.css';
 import { Header } from "../../common/Header/Header";
 import { GetAppointments, deleteAppointment, getAppointmentsById } from "../../services/apiCalls";
 import { CustomDelete } from "../../common/CustomDelete/CustomDelete";
-import { CustomLink } from "../../common/CustomLink/CustomLink";
 import Spinner from 'react-bootstrap/Spinner';
 import { useNavigate, useParams } from "react-router-dom";
 

@@ -112,16 +112,16 @@ export const Profile = () => {
             </Spinner>
           </div>
         ) : (
-          <div className="profileCardDesign">
-            <div className="cardUp">
-              <div className="userData">
-                <div className="inputFormat">
+          <div className="profileUserCardDesign">
+            <div className="cardByIdUp">
+              <div className="userByIdData">
+                <div className="inputByIdFormat">
                   <div>
-                    <div className="inputTitle">NAME:</div>
+                    <div className="inputByIdTitle">NAME:</div>
                   </div>
                   <div>
                     <CustomInput
-                      className={`inputDesign ${userError.firstNameError !== "" ? "inputDesignError" : ""
+                      className={`inputDesign ${userError.firstNameError !== "" ? "inputDesignError" : write === "" ? "inputDesignAvaiable" : ""
                         }`}
                       type={"text"}
                       placeholder={""}
@@ -135,14 +135,14 @@ export const Profile = () => {
                   </div>
                 </div>
 
-                <div className="inputFormat">
+                <div className="inputByIdFormat">
                   <div>
-                    <div className="inputTitle">LAST NAME:</div>
+                    <div className="inputByIdTitle">LAST NAME:</div>
                   </div>
                   <div>
                     <CustomInput
-                      className={`inputDesign ${userError.lastNameError !== "" ? "inputDesignError" : ""
-                        }`}
+                      className={`inputDesign ${userError.lastNameError !== "" ? "inputDesignError" : write === "" ? "inputDesignAvaiable" : ""
+                    }`}
                       type={"text"}
                       placeholder={""}
                       name={"lastName"}
@@ -155,14 +155,14 @@ export const Profile = () => {
                   </div>
                 </div>
 
-                <div className="inputFormat">
+                <div className="inputByIdFormat">
                   <div>
-                    <div className="inputTitle">PROFILE IMAGE:</div>
+                    <div className="inputByIdTitle">PROFILE IMAGE:</div>
                   </div>
                   <div>
                     <CustomInput
-                      className={`inputDesign ${userError.imageError !== "" ? "inputDesignError" : ""
-                        }`}
+                      className={`inputDesign ${userError.imageError !== "" ? "inputDesignError" : write === "" ? "inputDesignAvaiable" : ""
+                    }`}
                       type={"text"}
                       placeholder={""}
                       name={"image"}
@@ -175,9 +175,9 @@ export const Profile = () => {
                   </div>
                 </div>
 
-                <div className="inputFormat">
+                <div className="inputByIdFormat">
                   <div>
-                    <div className="inputTitle">EMAIL:</div>
+                    <div className="inputByIdTitle">EMAIL:</div>
                   </div>
                   <div>
                     <CustomInput
@@ -196,9 +196,9 @@ export const Profile = () => {
                 </div>
               </div>
 
-              <div className="userImage">
-                <div className="inputTitle">PROFILE IMAGE:</div>
-                <img className="imageFormat" src={user.image} alt="pers1" />
+              <div className="userByIdImage">
+                <div className="inputImageByIdTitle">PROFILE IMAGE:</div>
+                <img className="imageByIdFormat" src={user.image} alt="pers1" />
               </div>
             </div>
 

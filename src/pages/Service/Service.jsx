@@ -99,7 +99,7 @@ export const Service = () => {
   return (
     <>
       <Header />
-      <div className="profileDesign">
+      <div className="serviceDesign">
         {!loadedData ? (
           <div>
             <Spinner animation="border" role="status">
@@ -107,81 +107,81 @@ export const Service = () => {
             </Spinner>
           </div>
         ) : (
-          <div className="profileCardDesign">
-            <div className="userData">
-              <div className="inputFormat">
-                <div>
-                  <div className="inputTitle">SERVICE NAME:</div>
+          <div className="serviceByIdCardDesign">
+            <div className="cardByIdUp">
+              <div className="userByIdData">
+                <div className="inputByIdFormat">
+                  <div>
+                    <div className="inputByIdTitle">SERVICE NAME:</div>
+                  </div>
+                  <div>
+                    <CustomInput
+                      className={`inputDesign ${serviceError.serviceNameError !== "" ? "inputDesignError" : write === "" ? "inputDesignAvaiable" : ""
+                        }`}
+                      type={"text"}
+                      placeholder={""}
+                      name={"serviceName"}
+                      disabled={write}
+                      value={service.serviceName || ""}
+                      onChangeFunction={(e) => inputHandler(e)}
+                      onBlurFunction={(e) => checkError(e)}
+                    />
+                    <div className="error">{serviceError.serviceNameError}</div>
+                  </div>
                 </div>
-                <div>
-                  <CustomInput
-                    className={`inputDesign ${serviceError.serviceNameError !== "" ? "inputDesignError" : ""
-                      }`}
-                    type={"text"}
-                    placeholder={""}
-                    name={"serviceName"}
-                    disabled={write}
-                    value={service.serviceName || ""}
-                    onChangeFunction={(e) => inputHandler(e)}
-                    onBlurFunction={(e) => checkError(e)}
-                  />
-                  <div className="error">{serviceError.serviceNameError}</div>
+
+                <div className="inputByIdFormat">
+                  <div>
+                    <div className="inputByIdTitle">DESCRIPTION NAME:</div>
+                  </div>
+                  <div>
+                    <CustomInput
+                      className={`inputDesign ${serviceError.descriptionError !== "" ? "inputDesignError" : write === "" ? "inputDesignAvaiable" : ""
+                        }`}
+                      type={"text"}
+                      placeholder={""}
+                      name={"description"}
+                      disabled={write}
+                      value={service.description || ""}
+                      onChangeFunction={(e) => inputHandler(e)}
+                      onBlurFunction={(e) => checkError(e)}
+                    />
+                    <div className="error">{serviceError.descriptionError}</div>
+                  </div>
+                </div>
+
+                <div className="inputByIdFormat">
+                  <div>
+                    <div className="inputByIdTitle">SERVICE IMAGE:</div>
+                  </div>
+                  <div>
+                    <CustomInput
+                      className={`inputDesign ${serviceError.imageError !== "" ? "inputDesignError" : write === "" ? "inputDesignAvaiable" : ""
+                        }`}
+                      type={"text"}
+                      placeholder={""}
+                      name={"image"}
+                      disabled={write}
+                      value={service.image || ""}
+                      onChangeFunction={(e) => inputHandler(e)}
+                      onBlurFunction={(e) => checkError(e)}
+                    />
+                    <div className="error">{serviceError.imageError}</div>
+                  </div>
                 </div>
               </div>
-
-              <div className="inputFormat">
-                <div>
-                  <div className="inputTitle">DESCRIPTION:</div>
-                </div>
-                <div>
-                  <CustomInput
-                    className={`inputDesign ${serviceError.descriptionError !== "" ? "inputDesignError" : ""
-                      }`}
-                    type={"text"}
-                    placeholder={""}
-                    name={"description"}
-                    disabled={write}
-                    value={service.description || ""}
-                    onChangeFunction={(e) => inputHandler(e)}
-                    onBlurFunction={(e) => checkError(e)}
-                  />
-                  <div className="error">{serviceError.descriptionError}</div>
-                </div>
+              <div className="userByIdImage">
+                <div className="inputImageByIdTitle">SERVICE IMAGE:</div>
+                <img className="imageByIdFormat" src={service.image} alt="service" />
               </div>
-
-              <div className="inputFormat">
-                <div>
-                  <div className="inputTitle">SERVICE IMAGE:</div>
-                </div>
-                <div>
-                  <CustomInput
-                    className={`inputDesign ${serviceError.imageError !== "" ? "inputDesignError" : ""
-                      }`}
-                    type={"text"}
-                    placeholder={""}
-                    name={"image"}
-                    disabled={write}
-                    value={service.image || ""}
-                    onChangeFunction={(e) => inputHandler(e)}
-                    onBlurFunction={(e) => checkError(e)}
-                  />
-                  <div className="error">{serviceError.imageError}</div>
-                </div>
-              </div>
-
+            </div>
+            <div className="cardDown">
               <CustomButton
                 className={write === "" ? "cButtonGreen cButtonDesign" : "cButtonDesign"}
                 title={write === "" ? "Confirm" : "Edit"}
                 functionEmit={write === "" ? updateData : () => setWrite("")}
               />
             </div>
-
-            <div className="userImage">
-              <div className="inputTitle">SERVICE IMAGE:</div>
-              <img className="imageFormat" src={service.image} alt="service" />
-            </div>
-
-
           </div>
         )}
       </div>

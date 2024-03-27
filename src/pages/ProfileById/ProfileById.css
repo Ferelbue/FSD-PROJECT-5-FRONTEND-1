@@ -11,20 +11,27 @@
 }
 
 
-.profileCardDesign {
+.profileByIdCardDesign {
     height: 80vh;
-    width: 50vw;
+    width: 70vw;
     border-radius: 1em;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    background-color: rgb(0, 0, 0);
+    box-shadow: 0 0 10px 0 black inset, 0 0 10px 2px black;
+    border-radius: 1em;
+    color: white;
+    font-size: large;
 
 }
 
 .img {
     height: 10em;
     width: 10em;
+
 }
 
 .appointment {
@@ -41,23 +48,23 @@
 
 }
 
-.inputFormat {
+.inputByIdFormat {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-
 }
 
-.inputTitle {
-    height:2.5em;
+.inputByIdTitle {
+    height: 1em;
     width: 10em;
 
-    color: black;
+    color: white;
     display: flex;
     justify-content: end;
 }
-.userData{
+
+.userByIdData {
     height: 80vh;
     width: 35vw;
     display: flex;
@@ -66,17 +73,56 @@
     align-items: center;
 }
 
-.userImage{
+.userByIdImage {
     height: 80vh;
-    width: 35vw;
+    width: 30vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.imageFormat{
+.imageByIdFormat {
 
-    height: 10em;
-    width: 10em;
+    height: 15em;
+    width: 15em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: crimson;
+    box-shadow: 0 0 10px 0 crimson inset, 0 0 20px 2px crimson;
+    border-radius: 1em;
+    border-width: 1em;
+    border-color: black;
+}
+
+.cardByIdUp {
+    height: 65vh;
+    width: 90vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardDown {
+    height: 15vh;
+    width: 90vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputImageByIdTitle{
+    height: 1em;
+    width: 15em;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    color: white;
+    margin: 1em;
+}
+.inputDesignAvaiable{
+    background-color: rgb(194, 231, 159);
+
 }

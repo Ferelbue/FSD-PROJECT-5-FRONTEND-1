@@ -41,6 +41,13 @@ export const validame = (type, value) => {
       }
 
       return "";
+
+    case "description":
+    case "serviceName":
+
+      return "";
+
+
     default:
   }
 };
