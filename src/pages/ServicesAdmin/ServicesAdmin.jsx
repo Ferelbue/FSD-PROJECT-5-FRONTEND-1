@@ -55,11 +55,11 @@ export const ServicesAdmin = () => {
     <>
       <Header />
       <div className='servicesDesign'>
-      <CustomButton
-            className={"cButtonDesign"}
-            title={"NEW SERVICE"}
-            functionEmit={()=>navigate("/newService")}
-          />
+        <CustomButton
+          className={"cButtonDesign"}
+          title={"NEW SERVICE"}
+          functionEmit={() => navigate("/newService")}
+        />
         <Carousel>
           {arrayServices.map((block, blockIndex) => (
             <Carousel.Item key={blockIndex}>
@@ -72,8 +72,8 @@ export const ServicesAdmin = () => {
                       <Card.Text>{service.description}</Card.Text>
                     </Card.Body>
                     <div className="cardButtons">
-                    <CustomDelete className="linkAdmin" title={`DELETE SERVICE`} onClick={() => handleDelete(service.id)} />
-                    <Link to={`/serviceById/${service.id}`} className="linkAdmin">UPDATE SERVICE</Link>
+                      <CustomDelete className="linkAdmin" title={`DELETE SERVICE`} onClick={() => handleDelete(service.id)} />
+                      <Link to={`/serviceById/${service.id}`} className="linkAdmin">UPDATE SERVICE</Link>
                     </div>
                   </Card>
                 ))}

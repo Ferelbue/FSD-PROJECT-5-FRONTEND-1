@@ -1,5 +1,5 @@
-.appointmentsDesign {
-    min-height: 84vh;
+.myAppointmentsDesign {
+    min-height: 90vh;
     min-width: 100%;
 
     display: flex;
@@ -10,29 +10,43 @@
 }
 
 
-.appointmentsCardDesign {
-    height: 30vh;
-    width: 90vw;
-    border-radius: 1em;
-    background-color: crimson !important;
-    opacity: 90%;
+.myAppointmentsCardDesign {
+    width: 28vw;
+    height: 70vh;
 
-    color:black;
-    display: flex;
-    flex-direction: row !important;
-    justify-content: center;
-    align-items: center;
     margin: 0.5em;
-    font-size:1.4vw !important;
-}
 
-.newAppointment{
-    height: 5em;
-    width: 30em;
-    background-color: aquamarine;
-    color: black;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    background-color: black;
+    box-shadow: 0 0 10px 0 black inset, 0 0 10px 2px black;
+    border-radius: 1em;
+    color: white;
+    font-size:large;
+
+    border-width: 0.1em;
+    border-color: black;
+}
+.myAppointmentsCardDesign:hover {
+    transition: 0.5s;
+
+    background-color: white;
+    cursor: pointer;
+    background-color: white;
+    box-shadow: 0 0 10px 0 black inset, 0 0 10px 2px black;
+
+    border-radius: 1em;
+    translate: 0em -0.3em;
+    color: black;
+
+    .imageServiceCard{
+        box-shadow: 0 0 10px 0 black inset, 0 0 20px 2px black;
+    }
 }
 
+.dateAppointment{
+    margin-top: 8vh;
+    font-size: xx-large;
+}
