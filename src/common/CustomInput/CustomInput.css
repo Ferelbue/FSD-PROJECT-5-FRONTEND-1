@@ -1,6 +1,6 @@
 .inputDesign {
-  height: 3em;
-  width: 18em;
+  height: 8vh;
+  width: 20vw;
 
   border: 0.2em solid black;
   border-radius: 0.5em;
@@ -9,6 +9,16 @@
   color: black;
   font-weight: bold;
 }
+
+@media screen and (max-width: 700px) {
+  .inputDesign {
+    height: 10vh;
+    width: 70vw;
+  }
+}
+
+
+
 
 .inputDesignError {
   border: 0.2em solid red;

@@ -41,10 +41,10 @@ export const Services = () => {
         <Carousel>
           {arrayServices.map((block, blockIndex) => (
             <Carousel.Item key={blockIndex}>
-              <div className="d-flex justify-content-around">
+              <div className="d-flex justify-content-around responsive">
                 {block.map((service, serviceIndex) => (
-                  <Card key={serviceIndex} className="cardService">
-                    <Card.Img className="imageCard" src={service.image} />
+                  <Card key={serviceIndex} className="cardAllService">
+                    <Card.Img className="imageServiceCard" src={service.image} />
                     <Card.Body>
                       <Card.Title>{service.serviceName.toUpperCase()}</Card.Title>
                       <Card.Text>{service.description}</Card.Text>

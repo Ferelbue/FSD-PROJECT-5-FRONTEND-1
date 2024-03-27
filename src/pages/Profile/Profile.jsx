@@ -7,15 +7,18 @@ import { Header } from "../../common/Header/Header";
 import { CustomButton } from "../../common/CustomButton/CustomButton";
 import { validame } from "../../utils/functions";
 import Spinner from 'react-bootstrap/Spinner';
+import { decodeToken } from "react-jwt";
 
 
 export const Profile = () => {
   const datosUser = JSON.parse(localStorage.getItem("passport"));
+  const password = datosUser.password
   const navigate = useNavigate();
 
   const [write, setWrite] = useState("disabled");
   const [tokenStorage, setTokenStorage] = useState(datosUser?.token);
   const [loadedData, setLoadedData] = useState(false);
+
 
   const [user, setUser] = useState({
     firstName: "",
@@ -58,12 +61,7 @@ export const Profile = () => {
       try {
         const fetched = await GetProfile(tokenStorage);
 
-        setTimeout(() => {
-          setLoadedData(true);
-
-        }, 1000);
-
-        // const parsedBirth = dayjs(fetched.data.birth).format("YYYY-MM-DD");
+        setLoadedData(true);
 
         setUser({
           firstName: fetched.data[0].firstName,
@@ -94,6 +92,27 @@ export const Profile = () => {
       })
 
       setWrite("disabled")
+      console.log(password)
+      const credenciales = {
+        email: user.email,
+        password: password,
+      };
+      const fetched2 = await LoginUser(credenciales);
+
+      if (fetched2) {
+        const decodificado = decodeToken(fetched2.token);
+
+        const passport = {
+          token: fetched2.token,
+          decodificado: decodificado,
+          password:password,
+        };
+
+        localStorage.setItem("passport", JSON.stringify(passport));
+
+        window.location.reload()
+
+      }
 
     } catch (error) {
       console.log(error)
@@ -104,7 +123,7 @@ export const Profile = () => {
   return (
     <>
       <Header />
-      <div className="profileDesign">
+      <div className="profileUserDesign">
         {!loadedData ? (
           <div>
             <Spinner animation="border" role="status">
@@ -117,7 +136,7 @@ export const Profile = () => {
               <div className="userByIdData">
                 <div className="inputByIdFormat">
                   <div>
-                    <div className="inputByIdTitle">NAME:</div>
+                    <div className="inputById">NAME:</div>
                   </div>
                   <div>
                     <CustomInput
@@ -137,12 +156,12 @@ export const Profile = () => {
 
                 <div className="inputByIdFormat">
                   <div>
-                    <div className="inputByIdTitle">LAST NAME:</div>
+                    <div className="inputById">LAST NAME:</div>
                   </div>
                   <div>
                     <CustomInput
                       className={`inputDesign ${userError.lastNameError !== "" ? "inputDesignError" : write === "" ? "inputDesignAvaiable" : ""
-                    }`}
+                        }`}
                       type={"text"}
                       placeholder={""}
                       name={"lastName"}
@@ -157,12 +176,12 @@ export const Profile = () => {
 
                 <div className="inputByIdFormat">
                   <div>
-                    <div className="inputByIdTitle">PROFILE IMAGE:</div>
+                    <div className="inputById">PROFILE IMAGE:</div>
                   </div>
                   <div>
                     <CustomInput
                       className={`inputDesign ${userError.imageError !== "" ? "inputDesignError" : write === "" ? "inputDesignAvaiable" : ""
-                    }`}
+                        }`}
                       type={"text"}
                       placeholder={""}
                       name={"image"}
@@ -177,7 +196,7 @@ export const Profile = () => {
 
                 <div className="inputByIdFormat">
                   <div>
-                    <div className="inputByIdTitle">EMAIL:</div>
+                    <div className="inputById">EMAIL:</div>
                   </div>
                   <div>
                     <CustomInput
@@ -197,8 +216,8 @@ export const Profile = () => {
               </div>
 
               <div className="userByIdImage">
-                <div className="inputImageByIdTitle">PROFILE IMAGE:</div>
-                <img className="imageByIdFormat" src={user.image} alt="pers1" />
+                <div className="inputImageById">PROFILE IMAGE:</div>
+                <img className="imageById" src={user.image} alt="pers1" />
               </div>
             </div>
 
