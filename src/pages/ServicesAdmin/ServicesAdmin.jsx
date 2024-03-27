@@ -6,6 +6,7 @@ import Card from 'react-bootstrap/Card';
 import Carousel from 'react-bootstrap/Carousel';
 import { CustomDelete } from "../../common/CustomDelete/CustomDelete";
 import { Link, useNavigate } from "react-router-dom";
+import { CustomButton } from "../../common/CustomButton/CustomButton";
 
 export const ServicesAdmin = () => {
   const datosUser = JSON.parse(localStorage.getItem("passport"));
@@ -54,13 +55,18 @@ export const ServicesAdmin = () => {
     <>
       <Header />
       <div className='servicesDesign'>
+      <CustomButton
+            className={"cButtonDesign"}
+            title={"NEW SERVICE"}
+            functionEmit={()=>navigate("/newService")}
+          />
         <Carousel>
           {arrayServices.map((block, blockIndex) => (
             <Carousel.Item key={blockIndex}>
-              <div className="d-flex justify-content-around">
+              <div className="d-flex justify-content-around responsive">
                 {block.map((service, serviceIndex) => (
                   <Card key={serviceIndex} className="cardService">
-                    <Card.Img className="imageCard" variant="top" src={service.image} />
+                    <Card.Img className="imageServiceCard" variant="top" src={service.image} />
                     <Card.Body>
                       <Card.Title>{service.serviceName}</Card.Title>
                       <Card.Text>{service.description}</Card.Text>

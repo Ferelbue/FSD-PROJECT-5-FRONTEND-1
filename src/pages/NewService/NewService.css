@@ -1,0 +1,85 @@
+.serviceDesign {
+    height: 84vh;
+    min-width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    background-image: url(../../img/header.jpg);
+}
+
+.inputByIdFormat {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputByIdTitle {
+    height: 1em;
+    width: 10em;
+
+    color: white;
+    display: flex;
+    justify-content: end;
+}
+
+.userByIdData {
+    height: 80vh;
+    width: 35vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.userByIdImage {
+    height: 80vh;
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.imageServiceFormat {
+
+    height: 15em;
+    width: 15em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 1em;
+    border-width: 1em;
+    border-color: black;
+}
+
+.cardByIdUp {
+    height: 65vh;
+    width: 90vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardDown {
+    height: 15vh;
+    width: 90vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputImageByIdTitle{
+    height: 1em;
+    width: 15em;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    color: white;
+    margin: 1em;
+}

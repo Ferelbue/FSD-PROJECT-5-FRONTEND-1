@@ -8,28 +8,66 @@
     align-items: center;
     background-image: url(../../img/header.jpg);
 }
-
-.imageCard{
-    height: 10em;
-    width: 10em;
+.responsive {
+    display: flex;
+    justify-content: center;
 }
 
-.prueba{
-
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
+@media screen and (max-width: 1000px) {
+    .responsive {
+        flex-direction: column;
+        align-items: center; 
+    }
 }
 .cardService{
-    width: 20em;
-    height: 35em;
+    width: 28vw;
+    height: 75vh;
+
     margin: 0.5em;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
+    background-color: black;
+    box-shadow: 0 0 10px 0 black inset, 0 0 10px 2px black;
+    border-radius: 1em;
+    color: white;
+    font-size:large;
+
+    border-width: 0.1em;
+    border-color: black;
 }
+.imageServiceCard{
+    margin-top: 1.5em;
+    height: 30vh;
+    width: 20vw;
+    background-color: crimson;
+    box-shadow: 0 0 10px 0 crimson inset, 0 0 20px 2px crimson;
+    border-radius: 1em;
+    border-width: 1em;
+    border-color: black;
+}
+@media screen and (max-width: 1000px) {
+    .cardService {
+        width: 80vw;
+        height: 85vh;
+        flex-direction: column;
+        align-items: center; 
+    }
+    .imageServiceCard{
+        height: 30vh;
+        width: 60vw;
+    }
+}
+
+
+.carousel-control-prev-icon, 
+.carousel-control-next-icon {
+    border-radius: 50%;
+    border: 1px solid rgb(0, 0, 0);
+    
+  }
 
 .linkAdmin {
     text-decoration: none;
@@ -47,4 +85,21 @@
 .cardButtons{
     margin-bottom: 1.2em;
 
+}
+
+.cardService:hover {
+    transition: 0.5s;
+
+    background-color: white;
+    cursor: pointer;
+    background-color: white;
+    box-shadow: 0 0 10px 0 black inset, 0 0 10px 2px black;
+
+    border-radius: 1em;
+    translate: 0em -0.3em;
+    color: black;
+
+    .imageServiceCard{
+        box-shadow: 0 0 10px 0 black inset, 0 0 20px 2px black;
+    }
 }
