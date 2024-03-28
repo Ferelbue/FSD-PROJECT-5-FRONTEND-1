@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import './Services.css';
 import { Header } from "../../common/Header/Header";
 import { GetServices } from "../../services/apiCalls";
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Carousel from 'react-bootstrap/Carousel';
 
@@ -13,11 +12,6 @@ export const Services = () => {
 
   const datosUser = JSON.parse(localStorage.getItem("passport"));
   const [tokenStorage, setTokenStorage] = useState(datosUser?.token);
-  useEffect(() => {
-    if (!tokenStorage) {
-      navigate("/");
-    }
-  }, [tokenStorage]);
   
   useEffect(() => {
     const fetchServices = async () => {
