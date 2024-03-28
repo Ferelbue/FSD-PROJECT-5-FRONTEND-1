@@ -5,15 +5,31 @@ import { GetAppointments, deleteAppointment } from "../../services/apiCalls";
 import { CustomDelete } from "../../common/CustomDelete/CustomDelete";
 import { CustomLink } from "../../common/CustomLink/CustomLink";
 import Spinner from 'react-bootstrap/Spinner';
+import { CustomButton } from "../../common/CustomButton/CustomButton";
+import { Navigate } from "react-router-dom";
+import Card from 'react-bootstrap/Card';
+import Carousel from 'react-bootstrap/Carousel';
+
+import { Link, useNavigate } from "react-router-dom";
+import dayjs from "dayjs";
 
 export const Appointments = () => {
 
   const [appointmentsData, setAppoinmentsData] = useState();
   const [error, setError] = useState();
+  const navigate = useNavigate();
   const [loadedData, setLoadedData] = useState(false);
   const token = JSON.parse(localStorage.getItem("passport"));
 
+  const datosUser = JSON.parse(localStorage.getItem("passport"));
+  const [tokenStorage, setTokenStorage] = useState(datosUser?.token);
+  useEffect(() => {
+    if (!tokenStorage) {
+      navigate("/");
+    }
+  }, [tokenStorage]);
 
+  
   useEffect(() => {
     const fetchUserAppointments = async () => {
       try {
@@ -45,12 +61,19 @@ export const Appointments = () => {
     }
   };
 
-
+  const carouselSize = 3;
+  const arrayAppointments = [];
+  if (appointmentsData && appointmentsData.data) {
+    for (let i = 0; i < appointmentsData.data.length; i += carouselSize) {
+      arrayAppointments.push(appointmentsData.data.slice(i, i + carouselSize));
+    }
+  }
+  console.log(arrayAppointments)
 
   return (
     <>
       <Header />
-      <div className='appointmentsDesign'>
+      <div className='myAppointmentsDesign'>
         {!loadedData ? (
           <div>
             <Spinner animation="border" role="status">
@@ -59,23 +82,35 @@ export const Appointments = () => {
           </div>
         ) : (
           <>
-            <div className="newAppointment">
-              <CustomLink title="NEW APPOINTMENT" destination="/newAppointment" />
+            <div >
+              <CustomButton
+                className={"cButtonDesign"}
+                title={"NEW APPOINTMENT"}
+                functionEmit={() => navigate("/newAppointment")}
+              />
             </div>
 
             <div>
-              {appointmentsData && appointmentsData.data.map((appointment, index) => (
-                <div key={index} className='appointmentsCardDesign'>
-                  <div className="body">
-                    <p>{appointment.id}</p>
-                    <p>{appointment.appointmentDate}</p>
-                    <p>{appointment.service.serviceName}</p>
-                  </div>
-
-                  <CustomDelete title={`DELETE`} onClick={() => handleDelete(appointment.id)} />
-
-                </div>
-              ))}
+              <Carousel>
+                {arrayAppointments.map((appointmentGroup, groupIndex) => (
+                  <Carousel.Item key={groupIndex}>
+                    <div className="d-flex justify-content-around responsive">
+                      {appointmentGroup.map((appointment, index) => (
+                        <Card key={index} className="myAppointmentsCardDesign">
+                          <Card.Img className="imageServiceCard" variant="top" src={appointment.service?.image} />
+                          <Card.Body>
+                            <Card.Title>{appointment.service?.serviceName}</Card.Title>
+                            <Card.Text className="dateAppointment">{dayjs(appointment.appointmentDate).format("YYYY-MM-DD")}</Card.Text>
+                          </Card.Body>
+                          <div className="cardButtons">
+                            <CustomDelete className="linkAdmin" title={`DELETE`} onClick={() => handleDelete(appointment.id)} />
+                          </div>
+                        </Card>
+                      ))}
+                    </div>
+                  </Carousel.Item>
+                ))}
+              </Carousel>
             </div>
           </>
         )}

@@ -17,7 +17,6 @@ export const Users = () => {
   const [error, setError] = useState();
   const [loadedData, setLoadedData] = useState(false);
 
-
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -80,7 +79,7 @@ export const Users = () => {
         <Carousel className="carousel">
           {arrayUsers.map((block, blockIndex) => (
             <Carousel.Item key={blockIndex}>
-              <div className="d-flex justify-content-around">
+              <div className="d-flex justify-content-around responsive">
                 {block.map((user, userIndex) => (
                   <Link to={`/profileById/${user.id}`} className="link">
                   <Card key={userIndex} className="cardUser">

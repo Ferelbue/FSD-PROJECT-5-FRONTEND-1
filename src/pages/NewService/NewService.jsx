@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import "./Service.css";
-import { GetProfile, GetServices, LoginUser, UpdateProfile, getServiceById, updateService } from "../../services/apiCalls";
+import "./NewService.css";
+import { CreateService, GetProfile, GetServices, LoginUser, UpdateProfile, getServiceById, updateService } from "../../services/apiCalls";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import { Header } from "../../common/Header/Header";
 import { CustomButton } from "../../common/CustomButton/CustomButton";
@@ -9,13 +9,18 @@ import { validame } from "../../utils/functions";
 import Spinner from 'react-bootstrap/Spinner';
 
 
-export const Service = () => {
+export const NewService = () => {
   const datosUser = JSON.parse(localStorage.getItem("passport"));
   const navigate = useNavigate();
-  const { serviceId } = useParams();
-  const [write, setWrite] = useState("disabled");
+  const [error, setError] = useState();
   const [tokenStorage, setTokenStorage] = useState(datosUser?.token);
-  const [loadedData, setLoadedData] = useState(false);
+  const [loadedData, setLoadedData] = useState(true);
+
+  useEffect(() => {
+    if (!tokenStorage) {
+      navigate("/");
+    }
+  }, [tokenStorage]);
 
   const [service, setService] = useState({
     serviceName: "",
@@ -51,49 +56,29 @@ export const Service = () => {
     }
   }, [tokenStorage]);
 
-  useEffect(() => {
-    const getService = async () => {
-      try {
-        const fetched = await getServiceById(serviceId, tokenStorage);
-
-        setTimeout(() => {
-          setLoadedData(true);
-
-        }, 1000);
-
-        setService({
-          serviceName: fetched.data.serviceName,
-          description: fetched.data.description,
-          image: fetched.data.image,
-        });
-
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    if (!loadedData) {
-      getService();
-    }
-  }, [service]);
-
-  const updateData = async () => {
-
+  const createMe = async () => {
     try {
-      const fetched = await updateService(tokenStorage, serviceId, service)
+      const serviceSend = {
+        serviceName: service.serviceName,
+        description: service.description,
+        image: service.image,
+      };
+      console.log(serviceSend);
+      console.log(tokenStorage);
+      const fetched = await CreateService(tokenStorage, serviceSend);
 
-      setService({
-        serviceName: fetched.data.serviceName,
-        description: fetched.data.description,
-        image: fetched.data.image,
-      })
+      setError(fetched.message);
 
-      setWrite("disabled")
+      setTimeout(() => {
+
+        navigate("/servicesAdmin")
+      }, 1200)
 
     } catch (error) {
-      console.log(error)
+      setError(error.message);
     }
-  }
+  };
+
 
 
   return (
@@ -116,17 +101,15 @@ export const Service = () => {
                   </div>
                   <div>
                     <CustomInput
-                      className={`inputDesign ${serviceError.serviceNameError !== "" ? "inputDesignError" : write === "" ? "inputDesignAvaiable" : ""
-                        }`}
+                      className={`inputDesign`}
                       type={"text"}
                       placeholder={""}
                       name={"serviceName"}
-                      disabled={write}
                       value={service.serviceName || ""}
                       onChangeFunction={(e) => inputHandler(e)}
                       onBlurFunction={(e) => checkError(e)}
                     />
-                    <div className="error">{serviceError.serviceNameError}</div>
+
                   </div>
                 </div>
 
@@ -136,17 +119,15 @@ export const Service = () => {
                   </div>
                   <div>
                     <CustomInput
-                      className={`inputDesign ${serviceError.descriptionError !== "" ? "inputDesignError" : write === "" ? "inputDesignAvaiable" : ""
-                        }`}
+                      className={`inputDesign`}
                       type={"text"}
                       placeholder={""}
                       name={"description"}
-                      disabled={write}
                       value={service.description || ""}
                       onChangeFunction={(e) => inputHandler(e)}
                       onBlurFunction={(e) => checkError(e)}
                     />
-                    <div className="error">{serviceError.descriptionError}</div>
+
                   </div>
                 </div>
 
@@ -156,30 +137,28 @@ export const Service = () => {
                   </div>
                   <div>
                     <CustomInput
-                      className={`inputDesign ${serviceError.imageError !== "" ? "inputDesignError" : write === "" ? "inputDesignAvaiable" : ""
-                        }`}
+                      className={`inputDesign`}
                       type={"text"}
                       placeholder={""}
                       name={"image"}
-                      disabled={write}
                       value={service.image || ""}
                       onChangeFunction={(e) => inputHandler(e)}
                       onBlurFunction={(e) => checkError(e)}
                     />
-                    <div className="error">{serviceError.imageError}</div>
+
                   </div>
                 </div>
               </div>
               <div className="userByIdImage">
                 <div className="inputImageByIdTitle">SERVICE IMAGE:</div>
-                <img className="imageByIdFormat" src={service.image} alt="service" />
+                <img className="imageServiceFormat" src={service.image} alt="service" />
               </div>
             </div>
             <div className="cardDown">
               <CustomButton
-                className={write === "" ? "cButtonGreen cButtonDesign" : "cButtonDesign"}
-                title={write === "" ? "Confirm" : "Edit"}
-                functionEmit={write === "" ? updateData : () => setWrite("")}
+                className={"cButtonDesign"}
+                title={"Send"}
+                functionEmit={() => createMe()}
               />
             </div>
           </div>

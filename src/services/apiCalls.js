@@ -358,3 +358,30 @@ export const updateService = async (token, serviceId, data) => {
     return error;
   }
 };
+
+export const CreateService = async (token, service) => {
+  console.log(token)
+  console.log(service)
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
+    },
+    body: JSON.stringify(service),
+  };
+
+  try {
+    const response = await fetch(`${root}services`, options);
+    console.log(response)
+    const data = await response.json();
+
+    if (!data.success) {
+      throw new Error(data.message);
+    }
+
+    return data;
+  } catch (error) {
+    return error;
+  }
+};

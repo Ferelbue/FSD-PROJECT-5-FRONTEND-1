@@ -57,11 +57,11 @@ export const ProfileById = () => {
   useEffect(() => {
     const getUserProfile = async () => {
       try {
-        const fetched = await getUserById(userId,tokenStorage);
+        const fetched = await getUserById(userId, tokenStorage);
 
         setTimeout(() => {
           setLoadedData(true);
-          
+
         }, 1000);
 
         // const parsedBirth = dayjs(fetched.data.birth).format("YYYY-MM-DD");
@@ -86,7 +86,7 @@ export const ProfileById = () => {
   const updateData = async () => {
 
     try {
-      const fetched = await updateUserProfile(tokenStorage,userId,user)
+      const fetched = await updateUserProfile(tokenStorage, userId, user)
       setUser({
         firstName: fetched.data.firstName,
         lastName: fetched.data.lastName,
@@ -113,101 +113,102 @@ export const ProfileById = () => {
             </Spinner>
           </div>
         ) : (
-          <div className="profileCardDesign">
-            <div className="userData">
-              <div className="inputFormat">
-                <div>
-                  <div className="inputTitle">NAME:</div>
+          <div className="profileByIdCardDesign">
+            <div className="cardByIdUp">
+              <div className="userByIdData">
+                <div className="inputByIdFormat">
+                  <div>
+                    <div className="inputByIdTitle">NAME:</div>
+                  </div>
+                  <div>
+                    <CustomInput
+                      className={`inputDesign ${userError.firstNameError !== "" ? "inputDesignError" : write === "" ? "inputDesignAvaiable" : ""
+                        }`}
+                      type={"text"}
+                      placeholder={""}
+                      name={"firstName"}
+                      disabled={write}
+                      value={user.firstName || ""}
+                      onChangeFunction={(e) => inputHandler(e)}
+                      onBlurFunction={(e) => checkError(e)}
+                    />
+                    <div className="error">{userError.firstNameError}</div>
+                  </div>
                 </div>
-                <div>
-                  <CustomInput
-                    className={`inputDesign ${userError.firstNameError !== "" ? "inputDesignError" : ""
-                      }`}
-                    type={"text"}
-                    placeholder={""}
-                    name={"firstName"}
-                    disabled={write}
-                    value={user.firstName || ""}
-                    onChangeFunction={(e) => inputHandler(e)}
-                    onBlurFunction={(e) => checkError(e)}
-                  />
-                  <div className="error">{userError.firstNameError}</div>
+
+                <div className="inputByIdFormat">
+                  <div>
+                    <div className="inputByIdTitle">LAST NAME:</div>
+                  </div>
+                  <div>
+                    <CustomInput
+                      className={`inputDesign ${userError.lastNameError !== "" ? "inputDesignError" : write === "" ? "inputDesignAvaiable" : ""
+                        }`}
+                      type={"text"}
+                      placeholder={""}
+                      name={"lastName"}
+                      disabled={write}
+                      value={user.lastName || ""}
+                      onChangeFunction={(e) => inputHandler(e)}
+                      onBlurFunction={(e) => checkError(e)}
+                    />
+                    <div className="error">{userError.lastNameError}</div>
+                  </div>
+                </div>
+
+                <div className="inputByIdFormat">
+                  <div>
+                    <div className="inputByIdTitle">PROFILE IMAGE:</div>
+                  </div>
+                  <div>
+                    <CustomInput
+                      className={`inputDesign ${userError.imageError !== "" ? "inputDesignError" : write === "" ? "inputDesignAvaiable" : ""
+                        }`}
+                      type={"text"}
+                      placeholder={""}
+                      name={"image"}
+                      disabled={write}
+                      value={user.image || ""}
+                      onChangeFunction={(e) => inputHandler(e)}
+                      onBlurFunction={(e) => checkError(e)}
+                    />
+                    <div className="error">{userError.imageError}</div>
+                  </div>
+                </div>
+
+                <div className="inputByIdFormat">
+                  <div>
+                    <div className="inputByIdTitle">EMAIL:</div>
+                  </div>
+                  <div>
+                    <CustomInput
+                      className={`inputDesign ${userError.emailError !== "" ? "inputDesignError" : ""
+                        }`}
+                      type={"email"}
+                      placeholder={""}
+                      name={"email"}
+                      disabled={"disabled"}
+                      value={user.email || ""}
+                      onChangeFunction={(e) => inputHandler(e)}
+                      onBlurFunction={(e) => checkError(e)}
+                    />
+                    <div className="error">{userError.emailError}</div>
+                  </div>
                 </div>
               </div>
 
-              <div className="inputFormat">
-                <div>
-                  <div className="inputTitle">LAST NAME:</div>
-                </div>
-                <div>
-                  <CustomInput
-                    className={`inputDesign ${userError.lastNameError !== "" ? "inputDesignError" : ""
-                      }`}
-                    type={"text"}
-                    placeholder={""}
-                    name={"lastName"}
-                    disabled={write}
-                    value={user.lastName || ""}
-                    onChangeFunction={(e) => inputHandler(e)}
-                    onBlurFunction={(e) => checkError(e)}
-                  />
-                  <div className="error">{userError.lastNameError}</div>
-                </div>
+              <div className="userByIdImage">
+                <div className="inputImageByIdTitle">PROFILE IMAGE:</div>
+                <img className="imageByIdFormat" src={user.image} alt="pers1" />
               </div>
-
-              <div className="inputFormat">
-                <div>
-                  <div className="inputTitle">PROFILE IMAGE:</div>
-                </div>
-                <div>
-                  <CustomInput
-                    className={`inputDesign ${userError.imageError !== "" ? "inputDesignError" : ""
-                      }`}
-                    type={"text"}
-                    placeholder={""}
-                    name={"image"}
-                    disabled={write}
-                    value={user.image || ""}
-                    onChangeFunction={(e) => inputHandler(e)}
-                    onBlurFunction={(e) => checkError(e)}
-                  />
-                  <div className="error">{userError.imageError}</div>
-                </div>
-              </div>
-
-              <div className="inputFormat">
-                <div>
-                  <div className="inputTitle">EMAIL:</div>
-                </div>
-                <div>
-                  <CustomInput
-                    className={`inputDesign ${userError.emailError !== "" ? "inputDesignError" : ""
-                      }`}
-                    type={"email"}
-                    placeholder={""}
-                    name={"email"}
-                    disabled={"disabled"}
-                    value={user.email || ""}
-                    onChangeFunction={(e) => inputHandler(e)}
-                    onBlurFunction={(e) => checkError(e)}
-                  />
-                  <div className="error">{userError.emailError}</div>
-                </div>
-              </div>
-
+            </div>
+            <div className="cardDown">
               <CustomButton
                 className={write === "" ? "cButtonGreen cButtonDesign" : "cButtonDesign"}
                 title={write === "" ? "Confirm" : "Edit"}
                 functionEmit={write === "" ? updateData : () => setWrite("")}
               />
             </div>
-
-            <div className="userImage">
-              <div className="inputTitle">PROFILE IMAGE:</div>
-              <img className="imageFormat" src={user.image} alt="pers1" />
-            </div>
-
-
           </div>
         )}
       </div>

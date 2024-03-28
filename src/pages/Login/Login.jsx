@@ -66,10 +66,11 @@ export const Login = () => {
         const passport = {
           token: fetched.token,
           decodificado: decodificado,
+          password: credenciales.password,
         };
 
         localStorage.setItem("passport", JSON.stringify(passport));
-
+  
         setMsgError(
           `WELCOME BACK ${(decodificado.userName).toUpperCase()}`
         );

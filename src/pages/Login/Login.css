@@ -18,8 +18,8 @@
 }
 
 .cardLoginDesign{
-    height: 19em;
-    width: 21em;
+    height: 45vh;
+    width: 30vw;
 
     display: flex;
     flex-direction: column;
@@ -30,3 +30,11 @@
     box-shadow: 0 0 10px 0 black inset, 0 0 40px 2px black;
     border-radius: 1em;
 }
+
+@media screen and (max-width: 700px) {
+    .cardLoginDesign {
+      height: 50vh;
+      width: 85vw;
+      
+    }
+  }

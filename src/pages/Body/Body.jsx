@@ -13,6 +13,7 @@ import { ProfileById } from '../ProfileById/ProfileById';
 import { AppointmentsById } from '../AppointmentsById/AppointmentsById';
 import { ServicesAdmin } from '../ServicesAdmin/ServicesAdmin';
 import { Service } from '../Service/Service';
+import { NewService } from '../NewService/NewService';
 
 export const Body = () => {
 
@@ -32,6 +33,7 @@ export const Body = () => {
             <Route path="/appointmentsById/:userId" element={<AppointmentsById />} />
             <Route path="/servicesAdmin" element={<ServicesAdmin />} />
             <Route path="/serviceById/:serviceId" element={<Service />} />
+            <Route path="/newService" element={<NewService />} />
         </Routes>
     )
 }

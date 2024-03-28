@@ -3,13 +3,21 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import "./Header.css";
+import { useEffect, useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
 
 export const Header = () => {
-
-  const token = JSON.parse(localStorage.getItem("passport"));
+  const [token, setToken] = useState(JSON.parse(localStorage.getItem('passport')));
   const roleName = token && token.decodificado ? token.decodificado.roleName : null;
   const userName = token && token.decodificado ? token.decodificado.userName : null;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const updatedToken = JSON.parse(localStorage.getItem('passport'));
+    setToken(updatedToken);
+  }, [userName]);
+
 
   return (
     <>
@@ -19,15 +27,14 @@ export const Header = () => {
           <Navbar expand="lg" className="headerDesign bg-body-tertiary" style={{ padding: '0em' }}>
             <Container>
               <Navbar.Brand href="#home">
-                <a href="/">
-                  <img
-                    src="../../../img/logo2.png"
-                    width="60"
-                    height="60"
-                    className="d-inline-block align-top"
-                    alt="React Bootstrap logo"
-                  />
-                </a>
+                <img
+                  src="../../../img/logo2.png"
+                  width="60"
+                  height="60"
+                  className="d-inline-block align-top"
+                  alt="React Bootstrap logo"
+                  onClick={() => navigate("/")}
+                />
               </Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
@@ -46,15 +53,14 @@ export const Header = () => {
             <Navbar expand="lg" className="headerDesign bg-body-tertiary" style={{ padding: '0em' }}>
               <Container>
                 <Navbar.Brand href="#home">
-                  <a href="/">
-                    <img
-                      src="../../../img/logo2.png"
-                      width="60"
-                      height="60"
-                      className="d-inline-block align-top"
-                      alt="React Bootstrap logo"
-                    />
-                  </a>
+                  <img
+                    src="../../../img/logo2.png"
+                    width="60"
+                    height="60"
+                    className="d-inline-block align-top"
+                    alt="React Bootstrap logo"
+                    onClick={() => navigate("/")}
+                  />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
@@ -74,15 +80,14 @@ export const Header = () => {
               <Navbar expand="lg" className="headerDesign bg-body-tertiary" style={{ padding: '0em' }}>
                 <Container>
                   <Navbar.Brand href="#home">
-                    <a href="/">
-                      <img
-                        src="../../../img/logo2.png"
-                        width="60"
-                        height="60"
-                        className="d-inline-block align-top"
-                        alt="React Bootstrap logo"
-                      />
-                    </a>
+                    <img
+                      src="../../../img/logo2.png"
+                      width="60"
+                      height="60"
+                      className="d-inline-block align-top"
+                      alt="React Bootstrap logo"
+                      onClick={() => navigate("/")}
+                    />
                   </Navbar.Brand>
                   <Navbar.Toggle aria-controls="basic-navbar-nav" />
                   <Navbar.Collapse id="basic-navbar-nav" >
@@ -101,15 +106,14 @@ export const Header = () => {
             <Navbar expand="lg" className="headerDesign bg-body-tertiary" style={{ padding: '0em' }}>
               <Container>
                 <Navbar.Brand href="#home">
-                  <a href="/">
-                    <img
-                      src="../../../img/logo2.png"
-                      width="60"
-                      height="60"
-                      className="d-inline-block align-top"
-                      alt="React Bootstrap logo"
-                    />
-                  </a>
+                  <img
+                    src="../../../img/logo2.png"
+                    width="60"
+                    height="60"
+                    className="d-inline-block align-top"
+                    alt="React Bootstrap logo"
+                    onClick={() => navigate("/")}
+                  />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" >

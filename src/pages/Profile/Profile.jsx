@@ -7,15 +7,26 @@ import { Header } from "../../common/Header/Header";
 import { CustomButton } from "../../common/CustomButton/CustomButton";
 import { validame } from "../../utils/functions";
 import Spinner from 'react-bootstrap/Spinner';
+import { decodeToken } from "react-jwt";
 
 
 export const Profile = () => {
   const datosUser = JSON.parse(localStorage.getItem("passport"));
+  
   const navigate = useNavigate();
 
   const [write, setWrite] = useState("disabled");
   const [tokenStorage, setTokenStorage] = useState(datosUser?.token);
   const [loadedData, setLoadedData] = useState(false);
+  const [password, setPassword] = useState();
+  
+
+  useEffect(() => {
+
+      setPassword(datosUser?.password)
+    
+  }, [tokenStorage]);
+  
 
   const [user, setUser] = useState({
     firstName: "",
@@ -58,12 +69,7 @@ export const Profile = () => {
       try {
         const fetched = await GetProfile(tokenStorage);
 
-        setTimeout(() => {
-          setLoadedData(true);
-
-        }, 1000);
-
-        // const parsedBirth = dayjs(fetched.data.birth).format("YYYY-MM-DD");
+        setLoadedData(true);
 
         setUser({
           firstName: fetched.data[0].firstName,
@@ -95,6 +101,27 @@ export const Profile = () => {
 
       setWrite("disabled")
 
+      const credenciales = {
+        email: user.email,
+        password: password,
+      };
+      const fetched2 = await LoginUser(credenciales);
+
+      if (fetched2) {
+        const decodificado = decodeToken(fetched2.token);
+
+        const passport = {
+          token: fetched2.token,
+          decodificado: decodificado,
+          password:password,
+        };
+
+        localStorage.setItem("passport", JSON.stringify(passport));
+
+        window.location.reload()
+
+      }
+
     } catch (error) {
       console.log(error)
     }
@@ -104,7 +131,7 @@ export const Profile = () => {
   return (
     <>
       <Header />
-      <div className="profileDesign">
+      <div className="profileUserDesign">
         {!loadedData ? (
           <div>
             <Spinner animation="border" role="status">
@@ -112,16 +139,16 @@ export const Profile = () => {
             </Spinner>
           </div>
         ) : (
-          <div className="profileCardDesign">
-            <div className="cardUp">
-              <div className="userData">
-                <div className="inputFormat">
+          <div className="profileUserCardDesign">
+            <div className="cardByIdUp">
+              <div className="userByIdData">
+                <div className="inputByIdFormat">
                   <div>
-                    <div className="inputTitle">NAME:</div>
+                    <div className="inputById">NAME:</div>
                   </div>
                   <div>
                     <CustomInput
-                      className={`inputDesign ${userError.firstNameError !== "" ? "inputDesignError" : ""
+                      className={`inputDesign ${userError.firstNameError !== "" ? "inputDesignError" : write === "" ? "inputDesignAvaiable" : ""
                         }`}
                       type={"text"}
                       placeholder={""}
@@ -135,13 +162,13 @@ export const Profile = () => {
                   </div>
                 </div>
 
-                <div className="inputFormat">
+                <div className="inputByIdFormat">
                   <div>
-                    <div className="inputTitle">LAST NAME:</div>
+                    <div className="inputById">LAST NAME:</div>
                   </div>
                   <div>
                     <CustomInput
-                      className={`inputDesign ${userError.lastNameError !== "" ? "inputDesignError" : ""
+                      className={`inputDesign ${userError.lastNameError !== "" ? "inputDesignError" : write === "" ? "inputDesignAvaiable" : ""
                         }`}
                       type={"text"}
                       placeholder={""}
@@ -155,13 +182,13 @@ export const Profile = () => {
                   </div>
                 </div>
 
-                <div className="inputFormat">
+                <div className="inputByIdFormat">
                   <div>
-                    <div className="inputTitle">PROFILE IMAGE:</div>
+                    <div className="inputById">PROFILE IMAGE:</div>
                   </div>
                   <div>
                     <CustomInput
-                      className={`inputDesign ${userError.imageError !== "" ? "inputDesignError" : ""
+                      className={`inputDesign ${userError.imageError !== "" ? "inputDesignError" : write === "" ? "inputDesignAvaiable" : ""
                         }`}
                       type={"text"}
                       placeholder={""}
@@ -175,9 +202,9 @@ export const Profile = () => {
                   </div>
                 </div>
 
-                <div className="inputFormat">
+                <div className="inputByIdFormat">
                   <div>
-                    <div className="inputTitle">EMAIL:</div>
+                    <div className="inputById">EMAIL:</div>
                   </div>
                   <div>
                     <CustomInput
@@ -196,9 +223,9 @@ export const Profile = () => {
                 </div>
               </div>
 
-              <div className="userImage">
-                <div className="inputTitle">PROFILE IMAGE:</div>
-                <img className="imageFormat" src={user.image} alt="pers1" />
+              <div className="userByIdImage">
+                <div className="inputImageById">PROFILE IMAGE:</div>
+                <img className="imageById" src={user.image} alt="pers1" />
               </div>
             </div>
 

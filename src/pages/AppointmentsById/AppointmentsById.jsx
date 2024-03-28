@@ -3,7 +3,6 @@ import './AppointmentsById.css';
 import { Header } from "../../common/Header/Header";
 import { GetAppointments, deleteAppointment, getAppointmentsById } from "../../services/apiCalls";
 import { CustomDelete } from "../../common/CustomDelete/CustomDelete";
-import { CustomLink } from "../../common/CustomLink/CustomLink";
 import Spinner from 'react-bootstrap/Spinner';
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -16,6 +15,14 @@ export const AppointmentsById = () => {
   const navigate = useNavigate();
   const { userId } = useParams();
 
+  const datosUser = JSON.parse(localStorage.getItem("passport"));
+  const [tokenStorage, setTokenStorage] = useState(datosUser?.token);
+  useEffect(() => {
+    if (!tokenStorage) {
+      navigate("/");
+    }
+  }, [tokenStorage]);
+  
   useEffect(() => {
     const fetchUserAppointments = async () => {
       try {
