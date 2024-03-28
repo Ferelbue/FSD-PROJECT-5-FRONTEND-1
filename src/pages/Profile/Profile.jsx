@@ -12,13 +12,21 @@ import { decodeToken } from "react-jwt";
 
 export const Profile = () => {
   const datosUser = JSON.parse(localStorage.getItem("passport"));
-  const password = datosUser.password
+  
   const navigate = useNavigate();
 
   const [write, setWrite] = useState("disabled");
   const [tokenStorage, setTokenStorage] = useState(datosUser?.token);
   const [loadedData, setLoadedData] = useState(false);
+  const [password, setPassword] = useState();
+  
 
+  useEffect(() => {
+
+      setPassword(datosUser?.password)
+    
+  }, [tokenStorage]);
+  
 
   const [user, setUser] = useState({
     firstName: "",
@@ -92,7 +100,7 @@ export const Profile = () => {
       })
 
       setWrite("disabled")
-      console.log(password)
+
       const credenciales = {
         email: user.email,
         password: password,

@@ -22,7 +22,12 @@ export const NewAppointment = () => {
 
   const [tokenStorage, setTokenStorage] = useState(datosUser?.token);
 
-
+  useEffect(() => {
+    if (!tokenStorage) {
+      navigate("/");
+    }
+  }, [tokenStorage]);
+  
   useEffect(() => {
     const fetchServices = async () => {
       try {
@@ -56,7 +61,7 @@ export const NewAppointment = () => {
         appointmentDate: date
       };
 
-      const fetched = await CreateAppointment(tokenStorage,appointmentSend);
+      const fetched = await CreateAppointment(tokenStorage, appointmentSend);
 
       setError(fetched.message);
 
@@ -77,33 +82,8 @@ export const NewAppointment = () => {
       <div className='newappointmentsDesign'>
         <div className="cardNewAppointment">
           <div>
-            <div>
-              SELECT A SERVICE
-            </div>
-            <div>
-              <Dropdown>
-                <Dropdown.Toggle>
-                  {service}
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  {serviceData && serviceData.data.map((service, index) => (
-                    <Dropdown.Item key={index} onClick={() => handleSelect(service)}>
-                      {service.serviceName}<br />
-                      <img src={service.image} alt={`image${index + 1}`} height="100em" />
-                    </Dropdown.Item>
-                  ))}
-                </Dropdown.Menu>
-              </Dropdown>
-            </div>
-          </div>
-          <CustomButton
-            className={"buttonAppointment"}
-            title={"SEND"}
-            functionEmit={createMe}
-          />
-          <div>
-            <div>
-              SELECT A DATE
+            <div className="selectTitle">
+              SELECT A DAY
             </div>
             <div>
               <Datetime
@@ -112,6 +92,31 @@ export const NewAppointment = () => {
                 timeFormat={false}
                 onChange={handleDateChange}
                 inputProps={{ readOnly: true, className: 'custom-input' }} />
+            </div>
+          </div>
+          <CustomButton
+            className={"appointmentButton"}
+            title={"SEND"}
+            functionEmit={createMe}
+          />
+          <div>
+            <div className="selectTitle">
+              SELECT A SERVICE
+            </div>
+            <div>
+              <Dropdown>
+                <Dropdown.Toggle className="selectService">
+                  {service}
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  {serviceData && serviceData.data.map((service, index) => (
+                    <Dropdown.Item key={index} onClick={() => handleSelect(service)}>
+                      {service.serviceName}<br />
+                      <img src={service.image} alt={`image${index}`} height="100em" />
+                    </Dropdown.Item>
+                  ))}
+                </Dropdown.Menu>
+              </Dropdown>
             </div>
           </div>
         </div>

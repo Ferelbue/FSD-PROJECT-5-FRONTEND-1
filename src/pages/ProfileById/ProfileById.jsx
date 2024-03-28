@@ -18,7 +18,6 @@ export const ProfileById = () => {
   const [tokenStorage, setTokenStorage] = useState(datosUser?.token);
   const [loadedData, setLoadedData] = useState(false);
 
-
   const [user, setUser] = useState({
     firstName: "",
     lastName: "",

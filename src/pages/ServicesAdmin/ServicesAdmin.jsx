@@ -17,6 +17,12 @@ export const ServicesAdmin = () => {
 
 
   useEffect(() => {
+    if (!tokenStorage) {
+      navigate("/");
+    }
+  }, [tokenStorage]);
+  
+  useEffect(() => {
     const fetchServices = async () => {
       try {
 

@@ -11,7 +11,14 @@ export const Services = () => {
   const [servicesData, setServicesData] = useState();
   const [error, setError] = useState();
 
-
+  const datosUser = JSON.parse(localStorage.getItem("passport"));
+  const [tokenStorage, setTokenStorage] = useState(datosUser?.token);
+  useEffect(() => {
+    if (!tokenStorage) {
+      navigate("/");
+    }
+  }, [tokenStorage]);
+  
   useEffect(() => {
     const fetchServices = async () => {
       try {

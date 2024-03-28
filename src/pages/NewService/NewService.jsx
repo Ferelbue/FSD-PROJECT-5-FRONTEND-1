@@ -16,6 +16,12 @@ export const NewService = () => {
   const [tokenStorage, setTokenStorage] = useState(datosUser?.token);
   const [loadedData, setLoadedData] = useState(true);
 
+  useEffect(() => {
+    if (!tokenStorage) {
+      navigate("/");
+    }
+  }, [tokenStorage]);
+
   const [service, setService] = useState({
     serviceName: "",
     description: "",

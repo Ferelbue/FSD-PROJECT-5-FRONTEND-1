@@ -1,6 +1,6 @@
 .newappointmentsDesign {
-    
-    min-height: 90em;
+
+    min-height: 180vh;
     min-width: 100%;
 
     display: flex;
@@ -12,18 +12,91 @@
 }
 
 
-.cardNewAppointment{
-    width:50em;
-    height: 90em;
+.cardNewAppointment {
+    width: 80vw;
+    height: 50vh;
 
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: start;
 
-    margin-top: 2em;
+    margin-top: 3em;
     padding: 1em;
     border-radius: 1em;
-    background-color: bisque;
-    
+    background-color: black;
+    background-color: black;
+    box-shadow: 0 0 10px 0 black inset, 0 0 40px 2px black;
+    border-radius: 1em;
+
+}
+
+.selectTitle {
+    color: white;
+}
+
+.selectService {
+    width: 20vw;
+    margin: 1em;
+    background-color: crimson;
+    border-color: crimson;
+}
+
+.selectService.show {
+    background-color: crimson;
+    border-color: crimson;
+}
+.selectService:click {
+    background-color: crimson;
+    border-color: crimson;
+}
+.selectService:hover {
+    background-color: crimson;
+    border-color: crimson;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 0 0 20px 2px crimson;
+
+}
+
+.appointmentButton {
+    height: 3em;
+    width: 10em;
+
+    border-radius: 0.5em;
+
+    background-color: red;
+    color: white;
+    font-weight: bold;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
+    cursor: pointer;
+
+    background-color: black;
+    border: 3px solid crimson;
+    border-radius: 50px;
+    -webkit-transition: all .15s ease-in-out;
+    transition: all .15s ease-in-out;
+    color: crimson;
+}
+
+.appointmentButton:hover {
+
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 0 0 20px 0 crimson inset, 0 0 40px 2px crimson;
+    border: 3px solid crimson;
+}
+.custom-input{
+    width: 20vw;
+    height: 1.5em;
+    margin: 0.7em;
+    background-color: crimson;
+    border-color: crimson;
+    border: solid crimson;
+    border-radius: 0.2em;
+    font-size: x-large;
 }

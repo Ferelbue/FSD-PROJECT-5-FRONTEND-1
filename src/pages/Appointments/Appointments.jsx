@@ -21,7 +21,15 @@ export const Appointments = () => {
   const [loadedData, setLoadedData] = useState(false);
   const token = JSON.parse(localStorage.getItem("passport"));
 
+  const datosUser = JSON.parse(localStorage.getItem("passport"));
+  const [tokenStorage, setTokenStorage] = useState(datosUser?.token);
+  useEffect(() => {
+    if (!tokenStorage) {
+      navigate("/");
+    }
+  }, [tokenStorage]);
 
+  
   useEffect(() => {
     const fetchUserAppointments = async () => {
       try {
