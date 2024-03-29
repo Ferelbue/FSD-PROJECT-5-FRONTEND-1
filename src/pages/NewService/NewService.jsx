@@ -156,7 +156,7 @@ export const NewService = () => {
             </div>
             <div className="cardSeviceDown">
               <CustomButton
-                className={"cButtonDesign"}
+                className={"cButtonDesign cButtonGreen"}
                 title={"Send"}
                 functionEmit={() => createMe()}
               />

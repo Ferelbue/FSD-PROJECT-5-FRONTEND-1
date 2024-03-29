@@ -24,7 +24,6 @@ export const Users = () => {
     token: datosUser.token,
     decodificado: decodificado
   };
-  console.log(decodificado)
 
   useEffect(() => {
     if (!tokenStorage || (datosUser?.decodificado.roleName !== "admin")) {
