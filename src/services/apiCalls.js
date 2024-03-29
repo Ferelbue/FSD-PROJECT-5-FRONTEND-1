@@ -1,5 +1,5 @@
 
-const root = "http://localhost:4000/api/";
+const root = "https://fsd-project-4-backend-1-dev-bzxk.1.us-1.fl0.io/api/";
 
 export const RegisterUser = async (user) => {
   const options = {
