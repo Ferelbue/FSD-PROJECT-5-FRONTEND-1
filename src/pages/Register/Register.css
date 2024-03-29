@@ -36,7 +36,12 @@
 
 @media screen and (max-width: 700px) {
     .cardRegisterDesign {
-      height: 86vh;
+      height: 110vh;
+      width: 85vw;
+      
+    }
+    .registerDesign {
+      height: 120vh;
       width: 85vw;
       
     }

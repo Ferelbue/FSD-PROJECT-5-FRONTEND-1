@@ -5,6 +5,10 @@ import { GetAppointments, deleteAppointment, getAppointmentsById } from "../../s
 import { CustomDelete } from "../../common/CustomDelete/CustomDelete";
 import Spinner from 'react-bootstrap/Spinner';
 import { useNavigate, useParams } from "react-router-dom";
+import { CustomButton } from "../../common/CustomButton/CustomButton";
+import Carousel from 'react-bootstrap/Carousel';
+import { Card } from "react-bootstrap";
+import dayjs from "dayjs";
 
 export const AppointmentsById = () => {
 
@@ -47,7 +51,7 @@ export const AppointmentsById = () => {
 
       await deleteAppointment(appointmentId, token.token);
 
-      const updatedAppointmentData = await GetAppointments(token.token);
+      const updatedAppointmentData = await getAppointmentsById(token.token, userId);
       setAppoinmentsData(updatedAppointmentData);
 
     } catch (error) {
@@ -55,10 +59,19 @@ export const AppointmentsById = () => {
     }
   };
 
+  const carouselSize = 3;
+  const arrayAppointments = [];
+  if (appointmentsData && appointmentsData?.data) {
+    for (let i = 0; i < appointmentsData?.data.length; i += carouselSize) {
+      arrayAppointments.push(appointmentsData?.data.slice(i, i + carouselSize));
+    }
+  }
+  console.log(arrayAppointments)
+
   return (
     <>
       <Header />
-      <div className='appointmentsDesign'>
+      <div className='myAppointmentsDesign'>
         {!loadedData ? (
           <div>
             <Spinner animation="border" role="status">
@@ -68,18 +81,26 @@ export const AppointmentsById = () => {
         ) : (
           <>
             <div>
-              {appointmentsData && appointmentsData.data.map((appointment, index) => (
-                <div key={index} className='appointmentsCardDesign'>
-                  <div className="body">
-                    <p>{appointment.id}</p>
-                    <p>{appointment.appointmentDate}</p>
-                    <p>{appointment.service.serviceName}</p>
-                  </div>
-
-                  <CustomDelete title={`DELETE`} onClick={() => handleDelete(appointment.id)} />
-
-                </div>
-              ))}
+              <Carousel>
+                {arrayAppointments.map((appointmentGroup, groupIndex) => (
+                  <Carousel.Item key={groupIndex}>
+                    <div className="d-flex justify-content-around responsive">
+                      {appointmentGroup.map((appointment, index) => (
+                        <Card key={index} className="myAppointmentsCardDesign">
+                          <Card.Img className="imageServiceCard" variant="top" src={appointment.service?.image} />
+                          <Card.Body>
+                            <Card.Title>{appointment.service?.serviceName}</Card.Title>
+                            <Card.Text className="dateAppointment">{dayjs(appointment.appointmentDate).format("YYYY-MM-DD")}</Card.Text>
+                          </Card.Body>
+                          <div className="cardButtons">
+                            <CustomDelete className="linkAdmin" title={`DELETE`} onClick={() => handleDelete(appointment.id)} />
+                          </div>
+                        </Card>
+                      ))}
+                    </div>
+                  </Carousel.Item>
+                ))}
+              </Carousel>
             </div>
           </>
         )}

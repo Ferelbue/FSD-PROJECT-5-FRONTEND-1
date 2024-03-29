@@ -140,11 +140,11 @@ export const Profile = () => {
           </div>
         ) : (
           <div className="profileUserCardDesign">
-            <div className="cardByIdUp">
-              <div className="userByIdData">
-                <div className="inputByIdFormat">
+            <div className="cardUserUp">
+              <div className="userUserData">
+                <div className="inputUserFormat">
                   <div>
-                    <div className="inputById">NAME:</div>
+                    <div className="inputUser">NAME:</div>
                   </div>
                   <div>
                     <CustomInput
@@ -162,9 +162,9 @@ export const Profile = () => {
                   </div>
                 </div>
 
-                <div className="inputByIdFormat">
+                <div className="inputUserFormat">
                   <div>
-                    <div className="inputById">LAST NAME:</div>
+                    <div className="inputUser">LAST NAME:</div>
                   </div>
                   <div>
                     <CustomInput
@@ -182,9 +182,9 @@ export const Profile = () => {
                   </div>
                 </div>
 
-                <div className="inputByIdFormat">
+                <div className="inputUserFormat">
                   <div>
-                    <div className="inputById">PROFILE IMAGE:</div>
+                    <div className="inputUser">PROFILE IMAGE:</div>
                   </div>
                   <div>
                     <CustomInput
@@ -202,9 +202,9 @@ export const Profile = () => {
                   </div>
                 </div>
 
-                <div className="inputByIdFormat">
+                <div className="inputUserFormat">
                   <div>
-                    <div className="inputById">EMAIL:</div>
+                    <div className="inputUser">EMAIL:</div>
                   </div>
                   <div>
                     <CustomInput
@@ -223,13 +223,13 @@ export const Profile = () => {
                 </div>
               </div>
 
-              <div className="userByIdImage">
-                <div className="inputImageById">PROFILE IMAGE:</div>
-                <img className="imageById" src={user.image} alt="pers1" />
+              <div className="userImage">
+                <div className="inputImageUser">PROFILE IMAGE:</div>
+                <img className="imageUser" src={user.image} alt="pers1" />
               </div>
             </div>
 
-            <div className="cardDown">
+            <div className="cardUserDown">
 
               <CustomButton
                 className={write === "" ? "cButtonGreen cButtonDesign" : "cButtonDesign"}

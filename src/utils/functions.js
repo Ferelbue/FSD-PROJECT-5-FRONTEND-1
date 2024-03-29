@@ -7,7 +7,7 @@ export const validame = (type, value) => {
     case "lastName":
     case "cognom":
       if (value.length < 3) {
-        return "Please, name must contain at least 3 characters.";
+        return "Name must contain at least 3 char";
       }
 
       return "";
@@ -37,7 +37,7 @@ export const validame = (type, value) => {
     case "contraseña":
       const passwordRegex = /^.{6,}$/;
       if (!passwordRegex.test(value)) {
-        return "Password must contain at least 6 characters";
+        return "Password must contain at least 6 char";
       }
 
       return "";
