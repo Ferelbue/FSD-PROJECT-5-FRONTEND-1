@@ -100,3 +100,11 @@
     border-radius: 0.2em;
     font-size: x-large;
 }
+
+@media screen and (max-width: 1200px) {
+    .cardNewAppointment {
+        height: 130vh;
+        flex-direction: column;
+        align-items: center;
+    }
+}

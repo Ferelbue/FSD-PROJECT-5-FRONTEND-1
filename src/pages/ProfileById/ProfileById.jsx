@@ -105,7 +105,7 @@ export const ProfileById = () => {
   return (
     <>
       <Header />
-      <div className="profileDesign">
+      <div className="profileUserDesign">
         {!loadedData ? (
           <div>
             <Spinner animation="border" role="status">
@@ -113,12 +113,12 @@ export const ProfileById = () => {
             </Spinner>
           </div>
         ) : (
-          <div className="profileByIdCardDesign">
-            <div className="cardByIdUp">
-              <div className="userByIdData">
-                <div className="inputByIdFormat">
+          <div className="profileUserCardDesign">
+            <div className="cardUserUp">
+              <div className="userUserData">
+                <div className="inputUserFormat">
                   <div>
-                    <div className="inputByIdTitle">NAME:</div>
+                    <div className="inputUser">NAME:</div>
                   </div>
                   <div>
                     <CustomInput
@@ -136,9 +136,9 @@ export const ProfileById = () => {
                   </div>
                 </div>
 
-                <div className="inputByIdFormat">
+                <div className="inputUserFormat">
                   <div>
-                    <div className="inputByIdTitle">LAST NAME:</div>
+                    <div className="inputUser">LAST NAME:</div>
                   </div>
                   <div>
                     <CustomInput
@@ -156,9 +156,9 @@ export const ProfileById = () => {
                   </div>
                 </div>
 
-                <div className="inputByIdFormat">
+                <div className="inputUserFormat">
                   <div>
-                    <div className="inputByIdTitle">PROFILE IMAGE:</div>
+                    <div className="inputUser">PROFILE IMAGE:</div>
                   </div>
                   <div>
                     <CustomInput
@@ -176,9 +176,9 @@ export const ProfileById = () => {
                   </div>
                 </div>
 
-                <div className="inputByIdFormat">
+                <div className="inputUserFormat">
                   <div>
-                    <div className="inputByIdTitle">EMAIL:</div>
+                    <div className="inputUser">EMAIL:</div>
                   </div>
                   <div>
                     <CustomInput
@@ -197,12 +197,12 @@ export const ProfileById = () => {
                 </div>
               </div>
 
-              <div className="userByIdImage">
-                <div className="inputImageByIdTitle">PROFILE IMAGE:</div>
-                <img className="imageByIdFormat" src={user.image} alt="pers1" />
+              <div className="userImage">
+                <div className="inputImageUser">PROFILE IMAGE:</div>
+                <img className="imageUser" src={user.image} alt="pers1" />
               </div>
             </div>
-            <div className="cardDown">
+            <div className="cardUserDown">
               <CustomButton
                 className={write === "" ? "cButtonGreen cButtonDesign" : "cButtonDesign"}
                 title={write === "" ? "Confirm" : "Edit"}
