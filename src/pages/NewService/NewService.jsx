@@ -92,12 +92,12 @@ export const NewService = () => {
             </Spinner>
           </div>
         ) : (
-          <div className="serviceByIdCardDesign">
-            <div className="cardByIdUp">
-              <div className="userByIdData">
-                <div className="inputByIdFormat">
+          <div className="serviceCardDesign">
+            <div className="cardServiceUp">
+              <div className="serviceData">
+                <div className="inputServiceFormat">
                   <div>
-                    <div className="inputByIdTitle">SERVICE NAME:</div>
+                    <div className="inputServiceTitle">SERVICE NAME:</div>
                   </div>
                   <div>
                     <CustomInput
@@ -115,7 +115,7 @@ export const NewService = () => {
 
                 <div className="inputByIdFormat">
                   <div>
-                    <div className="inputByIdTitle">DESCRIPTION NAME:</div>
+                    <div className="inputServiceTitle">DESCRIPTION NAME:</div>
                   </div>
                   <div>
                     <CustomInput
@@ -133,7 +133,7 @@ export const NewService = () => {
 
                 <div className="inputByIdFormat">
                   <div>
-                    <div className="inputByIdTitle">SERVICE IMAGE:</div>
+                    <div className="inputServiceTitle">SERVICE IMAGE:</div>
                   </div>
                   <div>
                     <CustomInput
@@ -149,12 +149,12 @@ export const NewService = () => {
                   </div>
                 </div>
               </div>
-              <div className="userByIdImage">
-                <div className="inputImageByIdTitle">SERVICE IMAGE:</div>
+              <div className="serviceImage">
+                <div className="inputImageServiceTitle">SERVICE IMAGE:</div>
                 <img className="imageServiceFormat" src={service.image} alt="service" />
               </div>
             </div>
-            <div className="cardDown">
+            <div className="cardSeviceDown">
               <CustomButton
                 className={"cButtonDesign"}
                 title={"Send"}

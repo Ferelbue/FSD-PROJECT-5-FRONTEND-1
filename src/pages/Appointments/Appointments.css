@@ -50,3 +50,26 @@
     margin-top: 8vh;
     font-size: xx-large;
 }
+.responsive {
+    display: flex;
+    justify-content: center;
+}
+
+@media screen and (max-width: 1000px) {
+    .responsive {
+        flex-direction: column;
+        align-items: center; 
+    }
+}
+@media screen and (max-width: 1000px) {
+    .myAppointmentsCardDesign {
+        width: 80vw;
+        height: 85vh;
+        flex-direction: column;
+        align-items: center; 
+    }
+    .imageServiceCard{
+        height: 30vh;
+        width: 60vw;
+    }
+}
