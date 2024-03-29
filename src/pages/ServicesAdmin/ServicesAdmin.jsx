@@ -7,6 +7,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import { CustomDelete } from "../../common/CustomDelete/CustomDelete";
 import { Link, useNavigate } from "react-router-dom";
 import { CustomButton } from "../../common/CustomButton/CustomButton";
+import { decodeToken } from "react-jwt";
 
 export const ServicesAdmin = () => {
   const datosUser = JSON.parse(localStorage.getItem("passport"));
@@ -15,9 +16,16 @@ export const ServicesAdmin = () => {
   const [servicesData, setServicesData] = useState();
   const [error, setError] = useState();
 
+  const decodificado = decodeToken(datosUser.token);
+
+  const passport = {
+    token: datosUser.token,
+    decodificado: decodificado
+  };
+  console.log(decodificado)
 
   useEffect(() => {
-    if (!tokenStorage) {
+    if (!tokenStorage || (datosUser?.decodificado.roleName !== "admin")) {
       navigate("/");
     }
   }, [tokenStorage]);
