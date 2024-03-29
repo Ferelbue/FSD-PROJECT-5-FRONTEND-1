@@ -1,4 +1,5 @@
-const root = "https://fsd-project-4-backend-1-dev-bzxk.1.us-1.fl0.io/api/";
+
+const root = "http://localhost:4000/api/";
 
 export const RegisterUser = async (user) => {
   const options = {
@@ -189,7 +190,7 @@ export const CreateAppointment = async (token, appointment) => {
   }
 };
 
-export const GetUsers = async (token) => {
+export const GetUsers = async (token,email) => {
 
   const options = {
     method: "GET",
@@ -200,13 +201,13 @@ export const GetUsers = async (token) => {
   };
 
   try {
-    const response = await fetch(`${root}users`, options);
+    const response = await fetch(`${root}users?email=${email}`, options);
 
     const data = await response.json();
     if (!response.ok) {
       throw new Error(data.message);
     }
-
+console.log(data)
     return data;
 
   } catch (error) {

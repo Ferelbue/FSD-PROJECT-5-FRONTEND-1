@@ -1,5 +1,5 @@
 .usersDesign {
-    min-height: 84vh;
+    min-height: 91vh;
     min-width: 100%;
 
     display: flex;
@@ -123,4 +123,7 @@
     transition: 0.4s;
     color: rgb(255, 0, 0);
     font-size: large;
+}
+.filters{
+    height: 15vh;
 }
