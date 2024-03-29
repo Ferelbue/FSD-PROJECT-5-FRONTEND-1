@@ -28,7 +28,7 @@ export const Header = () => {
             <Container>
               <Navbar.Brand href="#home">
                 <img
-                  src="./img/logo2.png"
+                  src="../../../img/logo2.png"
                   width="60"
                   height="60"
                   className="d-inline-block align-top"
@@ -54,7 +54,7 @@ export const Header = () => {
               <Container>
                 <Navbar.Brand href="#home">
                   <img
-                    src="./img/logo2.png"
+                    src="../../../img/logo2.png"
                     width="60"
                     height="60"
                     className="d-inline-block align-top"
@@ -81,7 +81,7 @@ export const Header = () => {
                 <Container>
                   <Navbar.Brand href="#home">
                     <img
-                      src="./img/logo2.png"
+                      src="../../../img/logo2.png"
                       width="60"
                       height="60"
                       className="d-inline-block align-top"
@@ -107,7 +107,7 @@ export const Header = () => {
               <Container>
                 <Navbar.Brand href="#home">
                   <img
-                    src="./img/logo2.png"
+                    src="../../../img/logo2.png"
                     width="60"
                     height="60"
                     className="d-inline-block align-top"
