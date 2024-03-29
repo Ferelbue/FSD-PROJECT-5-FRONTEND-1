@@ -5,6 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import "./Header.css";
 import { useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
+import Logo from "../../../img/logo2.png";
 
 
 export const Header = () => {
@@ -28,7 +29,7 @@ export const Header = () => {
             <Container>
               <Navbar.Brand href="#home">
                 <img
-                  src="../../../img/logo2.png"
+                  src={Logo}
                   width="60"
                   height="60"
                   className="d-inline-block align-top"
@@ -54,7 +55,7 @@ export const Header = () => {
               <Container>
                 <Navbar.Brand href="#home">
                   <img
-                    src="../../../img/logo2.png"
+                    src={Logo}
                     width="60"
                     height="60"
                     className="d-inline-block align-top"
@@ -81,7 +82,7 @@ export const Header = () => {
                 <Container>
                   <Navbar.Brand href="#home">
                     <img
-                      src="../../../img/logo2.png"
+                      src={Logo}
                       width="60"
                       height="60"
                       className="d-inline-block align-top"
@@ -107,7 +108,7 @@ export const Header = () => {
               <Container>
                 <Navbar.Brand href="#home">
                   <img
-                    src="../../../img/logo2.png"
+                    src={Logo}
                     width="60"
                     height="60"
                     className="d-inline-block align-top"
