@@ -8,6 +8,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import { Link, useNavigate } from "react-router-dom";
 import { CustomDelete } from "../../common/CustomDelete/CustomDelete";
 import Spinner from 'react-bootstrap/Spinner';
+import { decodeToken } from "react-jwt";
 
 export const Users = () => {
   const datosUser = JSON.parse(localStorage.getItem("passport"));
@@ -16,6 +17,20 @@ export const Users = () => {
   const [usersData, setUsersData] = useState();
   const [error, setError] = useState();
   const [loadedData, setLoadedData] = useState(false);
+
+  const decodificado = decodeToken(datosUser.token);
+
+  const passport = {
+    token: datosUser.token,
+    decodificado: decodificado
+  };
+  console.log(decodificado)
+
+  useEffect(() => {
+    if (!tokenStorage || (datosUser?.decodificado.roleName !== "admin")) {
+      navigate("/");
+    }
+  }, [tokenStorage]);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -35,13 +50,6 @@ export const Users = () => {
 
     fetchUsers();
   }, []);
-
-  useEffect(() => {
-    if (!tokenStorage) {
-      navigate("/");
-    }
-  }, [tokenStorage]);
-
 
   const carouselSize = 4;
   const arrayUsers = [];
