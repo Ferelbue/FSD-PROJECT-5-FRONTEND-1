@@ -2,11 +2,10 @@
 
 # SORRY MOM - TATTOO STUDIO :black_nib:
 
-<div align="center">
-  <video width="320" height="240" autoplay>
-    <source src="./img/VIDEO_README.mp4" type="video/mp4">
-  </video>
-</div>
+
+
+![alt text](./img/VIDEO_README.mp4)
+
 
 This is the 6th project of the GeeksHubs Academy Fullstack Developer Bootcamp, showcasing a real-world frontend development skills with JavaScript and REACT.
 The projetc consists in develop the frontend corresponding to the appointment management system of a tattoo studio.
