@@ -36,18 +36,14 @@
 }
 
 .selectService {
-    width: 20vw;
+    width: 60vw;
     margin: 1em;
     background-color: crimson;
     border-color: crimson;
+    overflow: hidden;
 }
 
 .selectService.show {
-    background-color: crimson;
-    border-color: crimson;
-}
-
-.selectService:click {
     background-color: crimson;
     border-color: crimson;
 }
@@ -118,4 +114,13 @@
     .selectService {
         width: 60vw;
     }
+    .selectDownService{
+        width: 60vw;
+        overflow: hidden;
+    }
+}
+.selectService,
+.selectDownService{
+    width:22vw;
+    overflow: hidden;
 }

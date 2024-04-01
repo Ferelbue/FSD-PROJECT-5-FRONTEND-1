@@ -58,8 +58,10 @@ export const Profile = () => {
     const getUserProfile = async () => {
       try {
         const fetched = await GetProfile(tokenStorage);
+        setTimeout(() => {
+          setLoadedData(true);
 
-        setLoadedData(true);
+        }, 1000);
 
         setUser({
           firstName: fetched.data[0].firstName,

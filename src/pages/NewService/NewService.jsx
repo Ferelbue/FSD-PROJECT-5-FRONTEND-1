@@ -37,11 +37,6 @@ export const NewService = () => {
     }
   }, [tokenStorage]);
 
-  useEffect(() => {
-    if (!tokenStorage) {
-      navigate("/");
-    }
-  }, [tokenStorage]);
 
   const inputHandler = (e) => {
     setService((prevState) => ({

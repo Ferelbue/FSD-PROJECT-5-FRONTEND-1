@@ -18,11 +18,11 @@
 @media screen and (max-width: 1000px) {
     .responsive {
         flex-direction: column;
-        align-items: center; 
+        align-items: center;
     }
 }
 
-.cardAllService{
+.cardAllService {
     width: 28vw;
     height: 80vh;
 
@@ -36,12 +36,13 @@
     box-shadow: 0 0 10px 0 black inset, 0 0 10px 2px black;
     border-radius: 1em;
     color: white;
-    font-size:large;
+    font-size: large;
 
     border-width: 0.1em;
     border-color: black;
 }
-.imageServiceCard{
+
+.imageServiceCard {
     margin-top: 1.5em;
     height: 30vh;
     width: 20vw;
@@ -51,23 +52,25 @@
     border-width: 1em;
     border-color: black;
 }
+
 @media screen and (max-width: 1000px) {
     .cardAllService {
         width: 80vw;
         height: 85vh;
         flex-direction: column;
-        align-items: center; 
+        align-items: center;
     }
-    .imageServiceCard{
+
+    .imageServiceCard {
         height: 30vh;
         width: 60vw;
     }
 }
 
 
-.carousel-control-prev-icon, 
+.carousel-control-prev-icon,
 .carousel-control-next-icon {
     border-radius: 50%;
     border: 1px solid rgb(0, 0, 0);
-    
-  }
+
+}
