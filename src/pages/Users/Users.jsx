@@ -18,9 +18,9 @@ export const Users = () => {
   const [usersData, setUsersData] = useState();
   const [error, setError] = useState();
   const [loadedData, setLoadedData] = useState(false);
-  const decodificado = decodeToken(datosUser.token);
+  const decodificado = decodeToken(datosUser?.token);
   const passport = {
-    token: datosUser.token,
+    token: datosUser?.token,
     decodificado: decodificado
   };
   const [filter, setFilter] = useState({

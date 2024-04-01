@@ -16,9 +16,9 @@ export const Service = () => {
   const [write, setWrite] = useState("disabled");
   const [tokenStorage, setTokenStorage] = useState(datosUser?.token);
   const [loadedData, setLoadedData] = useState(false);
-  const decodificado = decodeToken(datosUser.token);
+  const decodificado = decodeToken(datosUser?.token);
   const passport = {
-    token: datosUser.token,
+    token: datosUser?.token,
     decodificado: decodificado
   };
   const [service, setService] = useState({
