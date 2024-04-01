@@ -1,10 +1,12 @@
 # SORRY MOM - TATTOO STUDIO :black_nib:
+---
+<div align="center">
 
+![Vídeo sin título ‐ Hecho con Clipchamp](https://github.com/Ferelbue/FSD-PROJECT-6-FRONTEND-1/assets/154675938/25855805-de0c-410c-835a-ebc9ffa052fd))
 
-![Hola](https://github.com/Ferelbue/FSD-PROJECT-6-FRONTEND-1/assets/154675938/c8a2f7ac-7ba6-441b-87d4-b5d31b6f58dd)
+ </div>
 
-
-This is the 6th project of the GeeksHubs Academy Fullstack Developer Bootcamp, showcasing a real-world frontend development skills with JavaScript and REACT.
+This is the 6th project of the GeeksHubs Academy Fullstack Developer Bootcamp, showcasing a real-world frontend development skills with REACT.
 The projetc consists in develop the frontend corresponding to the appointment management system of a tattoo studio.
 Users will be able to register in the application, log-in and access their personal area.
 Within their area view, they will be able to view scheduled appointments, as well as create new appointments.
@@ -14,31 +16,33 @@ There is also an admin view where they can have a general control of the app.
 
 ## Table of Contents 🗂️
 
-- [Stack 🛠️](#stack-🛠️)
-- [Features 🌟](#features-)
-- [Live Deployment 📡](#live-deployment-)
-- [Installation 🚀](#installation-)
+- [Stack 🔧](#stack-wrench)
+- [Features 🌟](#features-star2)
+- [Live Test 📡](#live-deployment-satellite)
+- [Installation 🚀](#installation-rocket)
 - [App pages / routes 📑](#app-pages--routes-)
-- [Author ✒️](#author-)
-- [Roadmap 🛣️](#roadmap-️)
-- [Acknowledgements 🎓](#acknowledgements-)
+
+- [Future version 🔮](#future-versions-crystal_ball)
+- [Author ✒️](#author-black_nib)
+- [Acknowledgements 🎓](#acknowledgements-mortar_board)
 
 ---
 
-## Stack 🛠️
+## Stack :wrench:
 
 <div align="center">
 <img src="https://img.shields.io/badge/-React-61DAFB?style=for-the-badge&logo=react&logoColor=black">
 <img src="https://img.shields.io/badge/-Vite-747bff?style=for-the-badge&logo=vite&logoColor=white">
 <img src="https://img.shields.io/badge/JavaScript-E5E104?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" />
 <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js" />
-<img src="https://img.shields.io/badge/fl0 {/}-0B615E?style=for-the-badge&logo=&logoColor=white" alt="" />
+<img src="https://img.shields.io/badge/bootstrap-8011F5?style=for-the-badge&logo=bootstrap&logoColor=white" alt="Node.js" />
+<img src="https://img.shields.io/badge/{/}  fl0-0B615E?style=for-the-badge&logo=&logoColor=white" alt="" />
 <img src="https://img.shields.io/badge/AWS-F39C12?style=for-the-badge&logo=amazon&logoColor=white" alt="aws" />
  </div>
 
 ---
 
-## Features 🌟
+## Features :star2:
 
 - **Responsive Design:** Adaptable to all tipes of devices. 📱💻
 - **User Authentication:** Secure signup and login processes. 🔒
@@ -49,7 +53,7 @@ There is also an admin view where they can have a general control of the app.
 
 ---
 
-## Live Deployment 📡
+## Live Test :satellite:
 
 Try out the APP at:
 
@@ -57,7 +61,7 @@ Try out the APP at:
 
 ---
 
-## Installation 🚀
+## Installation :rocket:
 
 Get up a copy of the project and running on your local machine for development and testing purposes.
 
@@ -72,7 +76,7 @@ You will need the [backend](https://github.com/Ferelbue/FSD-PROJECT-4-BACKEND-1.
 
 ---
 
-## App pages / routes 📑
+## App pages / routes :bookmark_tabs:
 
 **USER**
 
@@ -82,30 +86,26 @@ You will need the [backend](https://github.com/Ferelbue/FSD-PROJECT-4-BACKEND-1.
 - `/register` - Register page
 - `/profile` - Profile view / update
 - `/appointments` - My appointments page
+- `/newAppointment` - Create an appointment
 
 **ADMIN**
 
 - `/users` - See all users. FIlter by email. Delete user.
 - `/profileById/{userId}` - Update user profile
 - `/appointmentsById/{userId}` - See an specific user appointments and delete.
-- `/newAppointment` - Create an appointment.
 - `/servicesAdmin` - Delete and update service
 - `/serviceById/{serviceId}` - Update a service.
 - `/newService` - Create a service.
 
 ---
 
-## Future versions 🔮
+## Future versions :crystal_ball:
 
 - **Add notifications 🔔** - So users know when their appointments are modified, created or deleted.
 
 ---
 
-## Known bugs :alien:
-
----
-
-## Author ✒️
+## Author :black_nib:
 
 - **Fernando Elegido** - Full Stack Developer
 
