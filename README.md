@@ -1,8 +1,8 @@
-
-
 # SORRY MOM - TATTOO STUDIO :black_nib:
 
-![alt text](https://github.com/Ferelbue/FSD-PROJECT-6-FRONTEND-1/blob/develop/img/VIDEO_README.mp4)
+<video className="d-block carouselVideo" loop autoPlay muted >
+    <source src="https://github.com/Ferelbue/FSD-PROJECT-6-FRONTEND-1/assets/154675938/6d9c1429-93b3-4598-b892-909ad68b9fe4" type="video/mp4" />
+</video>
 
 This is the 6th project of the GeeksHubs Academy Fullstack Developer Bootcamp, showcasing a real-world frontend development skills with JavaScript and REACT.
 The projetc consists in develop the frontend corresponding to the appointment management system of a tattoo studio.
@@ -11,13 +11,14 @@ Within their area view, they will be able to view scheduled appointments, as wel
 There is also an admin view where they can have a general control of the app.
 
 ---
+
 ## Table of Contents 🗂️
 
 - [Stack 🛠️](#stack-)
 - [Features 🌟](#features-)
 - [Live Deployment 📡](#live-deployment-)
 - [Installation 🚀](#installation-)
-- [App pages / routes 📑](#app-pages-/-routes-)
+- [App pages / routes 📑](#app-pages--routes-)
 - [Author ✒️](#author-)
 - [Roadmap 🛣️](#roadmap-️)
 - [Acknowledgements 🎓](#acknowledgements-)
@@ -58,7 +59,7 @@ Try out the APP at:
 
 ## Installation 🚀
 
-Get a copy of the project up and running on your local machine for development and testing purposes.
+Get up a copy of the project and running on your local machine for development and testing purposes.
 
 ```sh
 git clone https://github.com/Ferelbue/FSD-PROJECT-6-FRONTEND-1.git
@@ -74,6 +75,7 @@ You will need the [backend](https://github.com/Ferelbue/FSD-PROJECT-4-BACKEND-1.
 ## App pages / routes 📑
 
 **USER**
+
 - `/`- Home page
 - `/services`- Sercices page view for al users
 - `/login` - Login page
@@ -90,9 +92,10 @@ You will need the [backend](https://github.com/Ferelbue/FSD-PROJECT-4-BACKEND-1.
 - `/servicesAdmin` - Delete and update service
 - `/serviceById/{serviceId}` - Update a service.
 - `/newService` - Create a service.
+
 ---
 
-## Future versions :crystal_ball:
+## Future versions 🔮
 
 - **Add notifications 🔔** - So users know when their appointments are modified, created or deleted.
 
@@ -100,11 +103,9 @@ You will need the [backend](https://github.com/Ferelbue/FSD-PROJECT-4-BACKEND-1.
 
 ## Known bugs :alien:
 
-
-
 ---
 
-## Author :black_nib:
+## Author ✒️
 
 - **Fernando Elegido** - Full Stack Developer
 
