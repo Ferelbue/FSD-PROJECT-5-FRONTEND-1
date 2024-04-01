@@ -1,7 +1,7 @@
 # SORRY MOM - TATTOO STUDIO :black_nib:
 
 <video className="d-block carouselVideo" loop autoPlay muted >
-    <source src="https://github.com/Ferelbue/FSD-PROJECT-6-FRONTEND-1/assets/154675938/6d9c1429-93b3-4598-b892-909ad68b9fe4" type="video/mp4" />
+    <source src="https://github-production-user-asset-6210df.s3.amazonaws.com/154675938/318409815-6d9c1429-93b3-4598-b892-909ad68b9fe4.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240401%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240401T104928Z&X-Amz-Expires=300&X-Amz-Signature=28ddc4e88fab722f6943f7821cdeda659827a60f159a1c97443dbbe20c0d8540&X-Amz-SignedHeaders=host&actor_id=154675938&key_id=0&repo_id=775620002" type="video/mp4" />
 </video>
 
 This is the 6th project of the GeeksHubs Academy Fullstack Developer Bootcamp, showcasing a real-world frontend development skills with JavaScript and REACT.
@@ -14,7 +14,7 @@ There is also an admin view where they can have a general control of the app.
 
 ## Table of Contents 🗂️
 
-- [Stack 🛠️](#stack-)
+- [Stack 🛠️](#stack-🛠️)
 - [Features 🌟](#features-)
 - [Live Deployment 📡](#live-deployment-)
 - [Installation 🚀](#installation-)
