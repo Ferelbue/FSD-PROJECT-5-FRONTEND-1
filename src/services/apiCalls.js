@@ -1,5 +1,8 @@
-
+// ONLINE DEPLOY
 const root = "https://fsd-project-4-backend-1-dev-bzxk.1.us-1.fl0.io/api/";
+
+//LOCAL DEPLOY
+// const root = "http://localhost:4000/api/";
 
 export const RegisterUser = async (user) => {
   const options = {
@@ -207,7 +210,6 @@ export const GetUsers = async (token,email) => {
     if (!response.ok) {
       throw new Error(data.message);
     }
-console.log(data)
     return data;
 
   } catch (error) {
@@ -361,8 +363,6 @@ export const updateService = async (token, serviceId, data) => {
 };
 
 export const CreateService = async (token, service) => {
-  console.log(token)
-  console.log(service)
   const options = {
     method: "POST",
     headers: {
@@ -374,7 +374,7 @@ export const CreateService = async (token, service) => {
 
   try {
     const response = await fetch(`${root}services`, options);
-    console.log(response)
+
     const data = await response.json();
 
     if (!data.success) {

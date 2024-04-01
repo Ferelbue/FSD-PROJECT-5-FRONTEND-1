@@ -3,37 +3,32 @@ import './Appointments.css';
 import { Header } from "../../common/Header/Header";
 import { GetAppointments, deleteAppointment } from "../../services/apiCalls";
 import { CustomDelete } from "../../common/CustomDelete/CustomDelete";
-import { CustomLink } from "../../common/CustomLink/CustomLink";
 import Spinner from 'react-bootstrap/Spinner';
 import { CustomButton } from "../../common/CustomButton/CustomButton";
-import { Navigate } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
 import Carousel from 'react-bootstrap/Carousel';
-
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
 
 export const Appointments = () => {
 
+  const datosUser = JSON.parse(localStorage.getItem("passport"));
+  const navigate = useNavigate();
   const [appointmentsData, setAppoinmentsData] = useState();
   const [error, setError] = useState();
-  const navigate = useNavigate();
   const [loadedData, setLoadedData] = useState(false);
-  const token = JSON.parse(localStorage.getItem("passport"));
-
-  const datosUser = JSON.parse(localStorage.getItem("passport"));
   const [tokenStorage, setTokenStorage] = useState(datosUser?.token);
+
   useEffect(() => {
     if (!tokenStorage) {
       navigate("/");
     }
   }, [tokenStorage]);
 
-  
   useEffect(() => {
     const fetchUserAppointments = async () => {
       try {
-        const data = await GetAppointments(token.token);
+        const data = await GetAppointments(tokenStorage);
         setAppoinmentsData(data);
 
         setTimeout(() => {
@@ -51,9 +46,9 @@ export const Appointments = () => {
 
   const handleDelete = async (appointmentId) => {
     try {
-      await deleteAppointment(appointmentId, token.token);
+      await deleteAppointment(appointmentId, tokenStorage);
 
-      const updatedAppointmentData = await GetAppointments(token.token);
+      const updatedAppointmentData = await GetAppointments(tokenStorage);
       setAppoinmentsData(updatedAppointmentData);
 
     } catch (error) {
@@ -68,7 +63,6 @@ export const Appointments = () => {
       arrayAppointments.push(appointmentsData.data.slice(i, i + carouselSize));
     }
   }
-  console.log(arrayAppointments)
 
   return (
     <>

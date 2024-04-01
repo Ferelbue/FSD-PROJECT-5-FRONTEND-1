@@ -1,23 +1,27 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import "./ProfileById.css";
-import { GetProfile, LoginUser, UpdateProfile, getUserById, updateUserProfile } from "../../services/apiCalls";
+import { getUserById, updateUserProfile } from "../../services/apiCalls";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import { Header } from "../../common/Header/Header";
 import { CustomButton } from "../../common/CustomButton/CustomButton";
 import { validame } from "../../utils/functions";
 import Spinner from 'react-bootstrap/Spinner';
 import { useParams } from 'react-router-dom';
+import { decodeToken } from "react-jwt";
 
 export const ProfileById = () => {
   const datosUser = JSON.parse(localStorage.getItem("passport"));
   const navigate = useNavigate();
   const { userId } = useParams();
-
   const [write, setWrite] = useState("disabled");
   const [tokenStorage, setTokenStorage] = useState(datosUser?.token);
   const [loadedData, setLoadedData] = useState(false);
-
+  const decodificado = decodeToken(datosUser?.token);
+  const passport = {
+    token: datosUser?.token,
+    decodificado: decodificado
+  };
   const [user, setUser] = useState({
     firstName: "",
     lastName: "",
@@ -31,28 +35,12 @@ export const ProfileById = () => {
     emailError: "",
   });
 
-  const inputHandler = (e) => {
-    setUser((prevState) => ({
-      ...prevState,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
-  const checkError = (e) => {
-    const error = validame(e.target.name, e.target.value);
-
-    setUserError((prevState) => ({
-      ...prevState,
-      [e.target.name + "Error"]: error,
-
-    }));
-  };
-
   useEffect(() => {
-    if (!tokenStorage) {
+    if (!tokenStorage || (datosUser?.decodificado.roleName !== "admin")) {
       navigate("/");
     }
   }, [tokenStorage]);
+
 
   useEffect(() => {
     const getUserProfile = async () => {
@@ -63,8 +51,6 @@ export const ProfileById = () => {
           setLoadedData(true);
 
         }, 1000);
-
-        // const parsedBirth = dayjs(fetched.data.birth).format("YYYY-MM-DD");
 
         setUser({
           firstName: fetched.data.firstName,
@@ -83,6 +69,23 @@ export const ProfileById = () => {
     }
   }, [user]);
 
+  const inputHandler = (e) => {
+    setUser((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const checkError = (e) => {
+    const error = validame(e.target.name, e.target.value);
+
+    setUserError((prevState) => ({
+      ...prevState,
+      [e.target.name + "Error"]: error,
+
+    }));
+  };
+
   const updateData = async () => {
 
     try {
@@ -100,7 +103,6 @@ export const ProfileById = () => {
       console.log(error)
     }
   }
-
 
   return (
     <>

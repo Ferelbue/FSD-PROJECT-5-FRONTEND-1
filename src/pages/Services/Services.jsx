@@ -4,20 +4,17 @@ import { Header } from "../../common/Header/Header";
 import { GetServices } from "../../services/apiCalls";
 import Card from 'react-bootstrap/Card';
 import Carousel from 'react-bootstrap/Carousel';
-// import imageBack from ""
 
 export const Services = () => {
 
   const [servicesData, setServicesData] = useState();
   const [error, setError] = useState();
-
   const datosUser = JSON.parse(localStorage.getItem("passport"));
   const [tokenStorage, setTokenStorage] = useState(datosUser?.token);
   
   useEffect(() => {
     const fetchServices = async () => {
       try {
-
         const data = await GetServices();
         setServicesData(data);
         
@@ -36,6 +33,7 @@ export const Services = () => {
       arrayServices.push(servicesData.data.slice(i, i + carouselSize));
     }
   }
+  
   return (
     <>
       <Header />

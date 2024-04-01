@@ -12,22 +12,11 @@ import { decodeToken } from "react-jwt";
 
 export const Profile = () => {
   const datosUser = JSON.parse(localStorage.getItem("passport"));
-  
   const navigate = useNavigate();
-
   const [write, setWrite] = useState("disabled");
   const [tokenStorage, setTokenStorage] = useState(datosUser?.token);
   const [loadedData, setLoadedData] = useState(false);
   const [password, setPassword] = useState();
-  
-
-  useEffect(() => {
-
-      setPassword(datosUser?.password)
-    
-  }, [tokenStorage]);
-  
-
   const [user, setUser] = useState({
     firstName: "",
     lastName: "",
@@ -40,6 +29,13 @@ export const Profile = () => {
     imageError: "",
     emailError: "",
   });
+  
+  useEffect(() => {
+    if (!tokenStorage) {
+      navigate("/");
+    }
+    setPassword(datosUser?.password)
+  }, [tokenStorage]);
 
   const inputHandler = (e) => {
     setUser((prevState) => ({
@@ -57,12 +53,6 @@ export const Profile = () => {
 
     }));
   };
-
-  useEffect(() => {
-    if (!tokenStorage) {
-      navigate("/");
-    }
-  }, [tokenStorage]);
 
   useEffect(() => {
     const getUserProfile = async () => {
@@ -113,20 +103,18 @@ export const Profile = () => {
         const passport = {
           token: fetched2.token,
           decodificado: decodificado,
-          password:password,
+          password: password,
         };
 
         localStorage.setItem("passport", JSON.stringify(passport));
 
         window.location.reload()
-
       }
 
     } catch (error) {
       console.log(error)
     }
   }
-
 
   return (
     <>

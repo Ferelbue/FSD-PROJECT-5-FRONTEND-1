@@ -19,7 +19,6 @@ export const NewAppointment = () => {
   const [selectedService, setSelectedService] = useState();
   const [service, setService] = useState();
   const datosUser = JSON.parse(localStorage.getItem("passport"));
-
   const [tokenStorage, setTokenStorage] = useState(datosUser?.token);
 
   useEffect(() => {
@@ -47,12 +46,10 @@ export const NewAppointment = () => {
     setSelectedService(service.id);
   };
 
-
   const handleDateChange = (date) => {
     const formattedDate = moment(date).format('YYYY-MM-DD');
     setSelectedDate(formattedDate);
   };
-
 
   const createMe = async () => {
     try {
@@ -94,16 +91,18 @@ export const NewAppointment = () => {
                 inputProps={{ readOnly: true, className: 'custom-input' }} />
             </div>
           </div>
+          <div className="test2">
           <CustomButton
             className={"appointmentButton"}
             title={"SEND"}
             functionEmit={createMe}
           />
+          </div>
           <div>
             <div className="selectTitle">
               SELECT A SERVICE
             </div>
-            <div>
+            <div className="test1">
               <Dropdown>
                 <Dropdown.Toggle className="selectService">
                   {service}

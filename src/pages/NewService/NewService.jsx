@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./NewService.css";
-import { CreateService, GetProfile, GetServices, LoginUser, UpdateProfile, getServiceById, updateService } from "../../services/apiCalls";
+import { CreateService } from "../../services/apiCalls";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import { Header } from "../../common/Header/Header";
 import { CustomButton } from "../../common/CustomButton/CustomButton";
 import { validame } from "../../utils/functions";
 import Spinner from 'react-bootstrap/Spinner';
-
+import { decodeToken } from "react-jwt";
 
 export const NewService = () => {
   const datosUser = JSON.parse(localStorage.getItem("passport"));
@@ -15,13 +15,11 @@ export const NewService = () => {
   const [error, setError] = useState();
   const [tokenStorage, setTokenStorage] = useState(datosUser?.token);
   const [loadedData, setLoadedData] = useState(true);
-
-  useEffect(() => {
-    if (!tokenStorage) {
-      navigate("/");
-    }
-  }, [tokenStorage]);
-
+  const decodificado = decodeToken(datosUser.token);
+  const passport = {
+    token: datosUser.token,
+    decodificado: decodificado
+  };
   const [service, setService] = useState({
     serviceName: "",
     description: "",
@@ -32,6 +30,18 @@ export const NewService = () => {
     descriptionError: "",
     imageError: "",
   });
+
+  useEffect(() => {
+    if (!tokenStorage || (datosUser?.decodificado.roleName !== "admin")) {
+      navigate("/");
+    }
+  }, [tokenStorage]);
+
+  useEffect(() => {
+    if (!tokenStorage) {
+      navigate("/");
+    }
+  }, [tokenStorage]);
 
   const inputHandler = (e) => {
     setService((prevState) => ({
@@ -50,12 +60,6 @@ export const NewService = () => {
     }));
   };
 
-  useEffect(() => {
-    if (!tokenStorage) {
-      navigate("/");
-    }
-  }, [tokenStorage]);
-
   const createMe = async () => {
     try {
       const serviceSend = {
@@ -63,8 +67,7 @@ export const NewService = () => {
         description: service.description,
         image: service.image,
       };
-      console.log(serviceSend);
-      console.log(tokenStorage);
+
       const fetched = await CreateService(tokenStorage, serviceSend);
 
       setError(fetched.message);
@@ -78,8 +81,6 @@ export const NewService = () => {
       setError(error.message);
     }
   };
-
-
 
   return (
     <>
@@ -154,7 +155,7 @@ export const NewService = () => {
                 <img className="imageServiceFormat" src={service.image} alt="service" />
               </div>
             </div>
-            <div className="cardSeviceDown">
+            <div className="cardServiceDown">
               <CustomButton
                 className={"cButtonDesign cButtonGreen"}
                 title={"Send"}

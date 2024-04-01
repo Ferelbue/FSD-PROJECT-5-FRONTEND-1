@@ -15,14 +15,11 @@ export const ServicesAdmin = () => {
   const [tokenStorage, setTokenStorage] = useState(datosUser?.token);
   const [servicesData, setServicesData] = useState();
   const [error, setError] = useState();
-
   const decodificado = decodeToken(datosUser.token);
-
   const passport = {
     token: datosUser.token,
     decodificado: decodificado
   };
-  console.log(decodificado)
 
   useEffect(() => {
     if (!tokenStorage || (datosUser?.decodificado.roleName !== "admin")) {
@@ -63,7 +60,6 @@ export const ServicesAdmin = () => {
       arrayServices.push(servicesData.data.slice(i, i + carouselSize));
     }
   }
-
 
   return (
     <>

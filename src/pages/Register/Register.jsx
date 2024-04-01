@@ -10,7 +10,6 @@ import { Header } from "../../common/Header/Header";
 export const Register = () => {
 
   const navigate = useNavigate();
-
   const [user, setUser] = useState({
     firstName: "",
     lastName: "",
@@ -18,7 +17,6 @@ export const Register = () => {
     email: "",
     password: "",
   });
-
   const [userError, setUserError] = useState({
     firstNameError: "",
     lastNameError: "",
@@ -26,12 +24,9 @@ export const Register = () => {
     emailError: "",
     passwordError: "",
   });
-
   const [msgError, setMsgError] = useState("");
 
-  //funcion emit que está aqui en el padre... que se la pasamos al custom input
   const inputHandler = (e) => {
-    //voy a proceder a bindear....
     setUser((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
@@ -44,11 +39,10 @@ export const Register = () => {
     setUserError((prevState) => ({
       ...prevState,
       [e.target.name + "Error"]: error,
-      //el truco del almendruco nos dice que seria... nameError: error, o emailError: error
     }));
   };
 
-  //function emit que también está aqui en el padre...en este caso para registrar...
+
   const registerMe = async () => {
     try {
       for (let elemento in user) {
@@ -74,7 +68,6 @@ export const Register = () => {
     <>
       <Header />
       <div className="registerDesign">
-        {/* <pre>{JSON.stringify(user, null, 2)}</pre> */}
         <div className="cardRegisterDesign">
           <CustomInput
             className={`inputDesign ${userError.firstNameError !== "" ? "inputDesignError" : ""

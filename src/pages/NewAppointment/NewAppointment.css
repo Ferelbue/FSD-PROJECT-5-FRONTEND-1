@@ -1,6 +1,6 @@
 .newappointmentsDesign {
 
-    min-height: 180vh;
+    min-height: 280vh;
     min-width: 100%;
 
     display: flex;
@@ -46,10 +46,12 @@
     background-color: crimson;
     border-color: crimson;
 }
+
 .selectService:click {
     background-color: crimson;
     border-color: crimson;
 }
+
 .selectService:hover {
     background-color: crimson;
     border-color: crimson;
@@ -90,7 +92,8 @@
     box-shadow: 0 0 20px 0 crimson inset, 0 0 40px 2px crimson;
     border: 3px solid crimson;
 }
-.custom-input{
+
+.custom-input {
     width: 20vw;
     height: 1.5em;
     margin: 0.7em;
@@ -106,5 +109,13 @@
         height: 130vh;
         flex-direction: column;
         align-items: center;
+    }
+
+    .custom-input {
+        width: 60vw;
+    }
+
+    .selectService {
+        width: 60vw;
     }
 }
