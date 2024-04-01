@@ -2,14 +2,14 @@
 ---
 <div align="center">
 
-![Vídeo sin título ‐ Hecho con Clipchamp](https://github.com/Ferelbue/FSD-PROJECT-6-FRONTEND-1/assets/154675938/25855805-de0c-410c-835a-ebc9ffa052fd))
+![Vídeo sin título ‐ Hecho con Clipchamp](https://github.com/Ferelbue/FSD-PROJECT-6-FRONTEND-1/assets/154675938/25855805-de0c-410c-835a-ebc9ffa052fd)
 
  </div>
 
-This is the 6th project of the GeeksHubs Academy Fullstack Developer Bootcamp, showcasing a real-world frontend development skills with REACT.
-The projetc consists in develop the frontend corresponding to the appointment management system of a tattoo studio.
+This is the 6th project of the GeeksHubs Academy Fullstack Developer Bootcamp, showcasing a real-world frontend development skills with REACT.</br>
+The projetc consists in develop the frontend corresponding to the appointment management system of a tattoo studio.</br>
 Users will be able to register in the application, log-in and access their personal area.
-Within their area view, they will be able to view scheduled appointments, as well as create new appointments.
+Within their area view, they will be able to view scheduled appointments, as well as create new appointments.</br>
 There is also an admin view where they can have a general control of the app.
 
 ---
@@ -18,10 +18,9 @@ There is also an admin view where they can have a general control of the app.
 
 - [Stack 🔧](#stack-wrench)
 - [Features 🌟](#features-star2)
-- [Live Test 📡](#live-deployment-satellite)
+- [Live Test 📡](#live-test-satellite)
 - [Installation 🚀](#installation-rocket)
-- [App pages / routes 📑](#app-pages--routes-)
-
+- [App pages / routes 📑](#app-pages--routes-bookmark_tabs)
 - [Future version 🔮](#future-versions-crystal_ball)
 - [Author ✒️](#author-black_nib)
 - [Acknowledgements 🎓](#acknowledgements-mortar_board)
@@ -93,7 +92,7 @@ You will need the [backend](https://github.com/Ferelbue/FSD-PROJECT-4-BACKEND-1.
 - `/users` - See all users. FIlter by email. See user appointments. Delete user.
 - `/profileById/{userId}` - Update user profile.
 - `/appointmentsById/{userId}` - See an specific user appointments and delete.
-- `/servicesAdmin` - Delete and update service.
+- `/servicesAdmin` - Delete service.
 - `/serviceById/{serviceId}` - Update a service.
 - `/newService` - Create a service.
 
@@ -102,6 +101,7 @@ You will need the [backend](https://github.com/Ferelbue/FSD-PROJECT-4-BACKEND-1.
 ## Future versions :crystal_ball:
 
 - **Add notifications 🔔** - So users know when their appointments are modified, created or deleted.
+- **Create a tattoo catalogue 📖** - So users can select the tattoo before go to the studio.
 
 ---
 

@@ -15,9 +15,9 @@ export const NewService = () => {
   const [error, setError] = useState();
   const [tokenStorage, setTokenStorage] = useState(datosUser?.token);
   const [loadedData, setLoadedData] = useState(true);
-  const decodificado = decodeToken(datosUser.token);
+  const decodificado = decodeToken(datosUser?.token);
   const passport = {
-    token: datosUser.token,
+    token: datosUser?.token,
     decodificado: decodificado
   };
   const [service, setService] = useState({
