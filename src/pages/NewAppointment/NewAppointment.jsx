@@ -15,6 +15,7 @@ export const NewAppointment = () => {
   const navigate = useNavigate();
   const [serviceData, setServiceData] = useState();
   const [error, setError] = useState();
+  const [loadedData, setLoadedData] = useState(false);
   const [date, setSelectedDate] = useState();
   const [selectedService, setSelectedService] = useState();
   const [service, setService] = useState();
@@ -32,6 +33,11 @@ export const NewAppointment = () => {
       try {
         const data = await GetServices();
         setServiceData(data);
+
+        setTimeout(() => {
+          setLoadedData(true);
+
+        }, 1000);
 
       } catch (error) {
         setError(error);
@@ -77,6 +83,13 @@ export const NewAppointment = () => {
     <>
       <Header />
       <div className='newappointmentsDesign'>
+      {!loadedData ? (
+          <div>
+            <Spinner animation="border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+          </div>
+        ) : (
         <div className="cardNewAppointment">
           <div>
             <div className="selectTitle">
@@ -102,23 +115,22 @@ export const NewAppointment = () => {
             <div className="selectTitle">
               SELECT A SERVICE
             </div>
-            <div className="test1">
               <Dropdown>
                 <Dropdown.Toggle className="selectService">
                   {service}
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                   {serviceData && serviceData.data.map((service, index) => (
-                    <Dropdown.Item key={index} onClick={() => handleSelect(service)}>
-                      {service.serviceName}<br />
+                    <Dropdown.Item key={index} className="selectDownService" onClick={() => handleSelect(service)}>
+                      {service.serviceName }<br />
                       <img src={service.image} alt={`image${index}`} height="100em" />
                     </Dropdown.Item>
                   ))}
                 </Dropdown.Menu>
               </Dropdown>
-            </div>
           </div>
         </div>
+        )}
       </div>
     </>
   );

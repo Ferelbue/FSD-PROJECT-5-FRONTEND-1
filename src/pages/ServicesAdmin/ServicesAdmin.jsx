@@ -8,10 +8,12 @@ import { CustomDelete } from "../../common/CustomDelete/CustomDelete";
 import { Link, useNavigate } from "react-router-dom";
 import { CustomButton } from "../../common/CustomButton/CustomButton";
 import { decodeToken } from "react-jwt";
+import Spinner from 'react-bootstrap/Spinner';
 
 export const ServicesAdmin = () => {
   const datosUser = JSON.parse(localStorage.getItem("passport"));
   const navigate = useNavigate();
+  const [loadedData, setLoadedData] = useState(false);
   const [tokenStorage, setTokenStorage] = useState(datosUser?.token);
   const [servicesData, setServicesData] = useState();
   const [error, setError] = useState();
@@ -25,8 +27,11 @@ export const ServicesAdmin = () => {
     if (!tokenStorage || (datosUser?.decodificado.roleName !== "admin")) {
       navigate("/");
     }
+    setTimeout(() => {
+      setLoadedData(true);
+    }, 1000);
   }, [tokenStorage]);
-  
+
   useEffect(() => {
     const fetchServices = async () => {
       try {
@@ -65,32 +70,42 @@ export const ServicesAdmin = () => {
     <>
       <Header />
       <div className='servicesDesign'>
-        <CustomButton
-          className={"cButtonDesign"}
-          title={"NEW SERVICE"}
-          functionEmit={() => navigate("/newService")}
-        />
-        <Carousel>
-          {arrayServices.map((block, blockIndex) => (
-            <Carousel.Item key={blockIndex}>
-              <div className="d-flex justify-content-around responsive">
-                {block.map((service, serviceIndex) => (
-                  <Card key={serviceIndex} className="cardService">
-                    <Card.Img className="imageServiceCard" variant="top" src={service.image} />
-                    <Card.Body>
-                      <Card.Title>{service.serviceName}</Card.Title>
-                      <Card.Text>{service.description}</Card.Text>
-                    </Card.Body>
-                    <div className="cardButtons">
-                      <CustomDelete className="linkAdmin" title={`DELETE SERVICE`} onClick={() => handleDelete(service.id)} />
-                      <Link to={`/serviceById/${service.id}`} className="linkAdmin">UPDATE SERVICE</Link>
-                    </div>
-                  </Card>
-                ))}
-              </div>
-            </Carousel.Item>
-          ))}
-        </Carousel>
+        {!loadedData ? (
+          <div>
+            <Spinner animation="border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+          </div>
+        ) : (
+          <>
+            <CustomButton
+              className={"cButtonDesign"}
+              title={"NEW SERVICE"}
+              functionEmit={() => navigate("/newService")}
+            />
+            <Carousel>
+              {arrayServices.map((block, blockIndex) => (
+                <Carousel.Item key={blockIndex}>
+                  <div className="d-flex justify-content-around responsive">
+                    {block.map((service, serviceIndex) => (
+                      <Card key={serviceIndex} className="cardService">
+                        <Card.Img className="imageServiceCard" variant="top" src={service.image} />
+                        <Card.Body>
+                          <Card.Title>{service.serviceName}</Card.Title>
+                          <Card.Text>{service.description}</Card.Text>
+                        </Card.Body>
+                        <div className="cardButtons">
+                          <CustomDelete className="linkAdmin" title={`DELETE SERVICE`} onClick={() => handleDelete(service.id)} />
+                          <Link to={`/serviceById/${service.id}`} className="linkAdmin">UPDATE SERVICE</Link>
+                        </div>
+                      </Card>
+                    ))}
+                  </div>
+                </Carousel.Item>
+              ))}
+            </Carousel>
+          </>
+        )}
       </div>
     </>
   )

@@ -7,11 +7,12 @@ import { LoginUser } from "../../services/apiCalls";
 import { useNavigate } from "react-router-dom";
 import { decodeToken } from "react-jwt";
 import { Header } from "../../common/Header/Header";
-
+import Spinner from 'react-bootstrap/Spinner';
 
 export const Login = () => {
   const datosUser = JSON.parse(localStorage.getItem("passport"));
   const navigate = useNavigate();
+  const [loadedData, setLoadedData] = useState(false);
   const [tokenStorage, setTokenStorage] = useState(datosUser?.token);
   const [credenciales, setCredenciales] = useState({
     email: "",
@@ -28,15 +29,19 @@ export const Login = () => {
       [e.target.name]: e.target.value,
     }));
   };
-  
+
   useEffect(() => {
     if (tokenStorage) {
       navigate("/");
     }
+    setTimeout(() => {
+      setLoadedData(true);
+    }, 1000);
+
   }, [tokenStorage]);
-  
+
   const checkError = (e) => {
-  const error = validame(e.target.name, e.target.value);
+    const error = validame(e.target.name, e.target.value);
 
     setCredencialesError((prevState) => ({
       ...prevState,
@@ -64,14 +69,14 @@ export const Login = () => {
         };
 
         localStorage.setItem("passport", JSON.stringify(passport));
-  
+
         setMsgError(
           `WELCOME BACK ${(decodificado.userName).toUpperCase()}`
         );
       }
       setTimeout(() => {
         navigate("/");
-      }, 2000);
+      }, 1000);
 
 
     } catch (error) {
@@ -87,38 +92,46 @@ export const Login = () => {
   return (
     <>
       <Header />
-      <div className="loginDesign">
-        <div className="cardLoginDesign">
-          <CustomInput
-            className={`inputDesign ${credencialesError.emailError !== "" ? "inputDesignError" : ""
-              }`}
-            type={"email"}
-            placeholder={"Email..."}
-            name={"email"}
-            value={credenciales.email || ""}
-            onChangeFunction={(e) => inputHandler(e)}
-            onBlurFunction={(e) => checkError(e)}
-          />
-          <div className="error">{credencialesError.emailError}</div>
-          <CustomInput
-            className={`inputDesign ${credencialesError.passwordError !== "" ? "inputDesignError" : ""
-              }`}
-            type={"password"}
-            placeholder={"Password..."}
-            name={"password"}
-            value={credenciales.password || ""}
-            onChangeFunction={(e) => inputHandler(e)}
-            onBlurFunction={(e) => checkError(e)}
-          />
-          <div className="error">{credencialesError.passwordError}</div>
+      <div className='loginDesign'>
+        {!loadedData ? (
+          <div>
+            <Spinner animation="border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+          </div>
+        ) : (
+          <div className="cardLoginDesign">
+            <CustomInput
+              className={`inputDesign ${credencialesError.emailError !== "" ? "inputDesignError" : ""
+                }`}
+              type={"email"}
+              placeholder={"Email..."}
+              name={"email"}
+              value={credenciales.email || ""}
+              onChangeFunction={(e) => inputHandler(e)}
+              onBlurFunction={(e) => checkError(e)}
+            />
+            <div className="error">{credencialesError.emailError}</div>
+            <CustomInput
+              className={`inputDesign ${credencialesError.passwordError !== "" ? "inputDesignError" : ""
+                }`}
+              type={"password"}
+              placeholder={"Password..."}
+              name={"password"}
+              value={credenciales.password || ""}
+              onChangeFunction={(e) => inputHandler(e)}
+              onBlurFunction={(e) => checkError(e)}
+            />
+            <div className="error">{credencialesError.passwordError}</div>
 
-          <CustomButton
-            className={"cButtonDesign"}
-            title={"Login"}
-            functionEmit={loginMe}
-          />
-          <div className="error">{msgError}</div>
-        </div>
+            <CustomButton
+              className={"cButtonDesign"}
+              title={"Login"}
+              functionEmit={loginMe}
+            />
+            <div className="error">{msgError}</div>
+          </div>
+        )}
       </div>
     </>
   );
