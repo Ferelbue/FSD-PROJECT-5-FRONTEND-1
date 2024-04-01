@@ -80,20 +80,20 @@ You will need the [backend](https://github.com/Ferelbue/FSD-PROJECT-4-BACKEND-1.
 
 **USER**
 
-- `/`- Home page
-- `/services`- Sercices page view for al users
-- `/login` - Login page
-- `/register` - Register page
-- `/profile` - Profile view / update
-- `/appointments` - My appointments page
-- `/newAppointment` - Create an appointment
+- `/`- Home page.
+- `/services`- Sercices page view for al users.
+- `/login` - Login page.
+- `/register` - Register page.
+- `/profile` - Profile view / update.
+- `/appointments` - My appointments page.
+- `/newAppointment` - Create an appointment.
 
 **ADMIN**
 
-- `/users` - See all users. FIlter by email. Delete user.
-- `/profileById/{userId}` - Update user profile
+- `/users` - See all users. FIlter by email. See user appointments. Delete user.
+- `/profileById/{userId}` - Update user profile.
 - `/appointmentsById/{userId}` - See an specific user appointments and delete.
-- `/servicesAdmin` - Delete and update service
+- `/servicesAdmin` - Delete and update service.
 - `/serviceById/{serviceId}` - Update a service.
 - `/newService` - Create a service.
 
