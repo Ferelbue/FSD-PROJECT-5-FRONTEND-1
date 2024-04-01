@@ -3,7 +3,6 @@ import './CustomLink.css'
 
 export const CustomLink = ({ title, destination }) => {
 
-     //instancio useNavigate para poder usar navigate y moverme en la página
      const navigate = useNavigate();
      
      return (

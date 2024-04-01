@@ -1,28 +1,33 @@
 import React, { useState, useEffect } from "react";
 import './AppointmentsById.css';
 import { Header } from "../../common/Header/Header";
-import { GetAppointments, deleteAppointment, getAppointmentsById } from "../../services/apiCalls";
+import { deleteAppointment, getAppointmentsById } from "../../services/apiCalls";
 import { CustomDelete } from "../../common/CustomDelete/CustomDelete";
 import Spinner from 'react-bootstrap/Spinner';
 import { useNavigate, useParams } from "react-router-dom";
-import { CustomButton } from "../../common/CustomButton/CustomButton";
 import Carousel from 'react-bootstrap/Carousel';
 import { Card } from "react-bootstrap";
 import dayjs from "dayjs";
+import { decodeToken } from "react-jwt";
 
 export const AppointmentsById = () => {
 
-  const [appointmentsData, setAppoinmentsData] = useState();
-  const [error, setError] = useState();
-  const [loadedData, setLoadedData] = useState(false);
   const token = JSON.parse(localStorage.getItem("passport"));
   const navigate = useNavigate();
   const { userId } = useParams();
-
   const datosUser = JSON.parse(localStorage.getItem("passport"));
+  const decodificado = decodeToken(datosUser?.token);
+  const [appointmentsData, setAppoinmentsData] = useState();
+  const [error, setError] = useState();
+  const [loadedData, setLoadedData] = useState(false);
   const [tokenStorage, setTokenStorage] = useState(datosUser?.token);
+  const passport = {
+    token: datosUser?.token,
+    decodificado: decodificado
+  };
+
   useEffect(() => {
-    if (!tokenStorage) {
+    if (!tokenStorage || (datosUser?.decodificado.roleName !== "admin")) {
       navigate("/");
     }
   }, [tokenStorage]);
@@ -66,7 +71,6 @@ export const AppointmentsById = () => {
       arrayAppointments.push(appointmentsData?.data.slice(i, i + carouselSize));
     }
   }
-  console.log(arrayAppointments)
 
   return (
     <>

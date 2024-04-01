@@ -18,25 +18,20 @@ export const Users = () => {
   const [usersData, setUsersData] = useState();
   const [error, setError] = useState();
   const [loadedData, setLoadedData] = useState(false);
-
   const decodificado = decodeToken(datosUser.token);
-
   const passport = {
     token: datosUser.token,
     decodificado: decodificado
   };
-
   const [filter, setFilter] = useState({
     email: "",
   });
-
   const inputHandler = (e) => {
     setFilter((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
   };
-
 
   useEffect(() => {
     if (!tokenStorage || (datosUser?.decodificado.roleName !== "admin")) {
@@ -47,9 +42,6 @@ export const Users = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        console.log("hola")
-        console.log(tokenStorage)
-        console.log(filter.email)
         const data = await GetUsers(tokenStorage, filter.email);
         setUsersData(data);
 

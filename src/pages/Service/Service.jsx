@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./Service.css";
-import { GetProfile, GetServices, LoginUser, UpdateProfile, getServiceById, updateService } from "../../services/apiCalls";
+import { getServiceById, updateService } from "../../services/apiCalls";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import { Header } from "../../common/Header/Header";
 import { CustomButton } from "../../common/CustomButton/CustomButton";
 import { validame } from "../../utils/functions";
 import Spinner from 'react-bootstrap/Spinner';
-
+import { decodeToken } from "react-jwt";
 
 export const Service = () => {
   const datosUser = JSON.parse(localStorage.getItem("passport"));
@@ -16,7 +16,11 @@ export const Service = () => {
   const [write, setWrite] = useState("disabled");
   const [tokenStorage, setTokenStorage] = useState(datosUser?.token);
   const [loadedData, setLoadedData] = useState(false);
-
+  const decodificado = decodeToken(datosUser.token);
+  const passport = {
+    token: datosUser.token,
+    decodificado: decodificado
+  };
   const [service, setService] = useState({
     serviceName: "",
     description: "",
@@ -28,29 +32,12 @@ export const Service = () => {
     imageError: "",
   });
 
-  const inputHandler = (e) => {
-    setService((prevState) => ({
-      ...prevState,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
-  const checkError = (e) => {
-    const error = validame(e.target.name, e.target.value);
-
-    setServiceError((prevState) => ({
-      ...prevState,
-      [e.target.name + "Error"]: error,
-
-    }));
-  };
-
   useEffect(() => {
-    if (!tokenStorage) {
+    if (!tokenStorage || (datosUser?.decodificado.roleName !== "admin")) {
       navigate("/");
     }
   }, [tokenStorage]);
-
+  
   useEffect(() => {
     const getService = async () => {
       try {
@@ -76,6 +63,22 @@ export const Service = () => {
       getService();
     }
   }, [service]);
+  const inputHandler = (e) => {
+    setService((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const checkError = (e) => {
+    const error = validame(e.target.name, e.target.value);
+
+    setServiceError((prevState) => ({
+      ...prevState,
+      [e.target.name + "Error"]: error,
+
+    }));
+  };
 
   const updateData = async () => {
 
@@ -95,11 +98,10 @@ export const Service = () => {
     }
   }
 
-
   return (
     <>
       <Header />
-      <div className="serviceDesign">
+      <div className="serviceByIdDesign">
         {!loadedData ? (
           <div>
             <Spinner animation="border" role="status">
@@ -109,7 +111,7 @@ export const Service = () => {
         ) : (
           <div className="serviceByIdCardDesign">
             <div className="cardByIdUp">
-              <div className="userByIdData">
+              <div className="serviceByIdData">
                 <div className="inputByIdFormat">
                   <div>
                     <div className="inputByIdTitle">SERVICE NAME:</div>
@@ -170,12 +172,12 @@ export const Service = () => {
                   </div>
                 </div>
               </div>
-              <div className="userByIdImage">
+              <div className="serviceByIdImage">
                 <div className="inputImageByIdTitle">SERVICE IMAGE:</div>
                 <img className="imageByIdFormat" src={service.image} alt="service" />
               </div>
             </div>
-            <div className="cardDown">
+            <div className="cardByIdDown">
               <CustomButton
                 className={write === "" ? "cButtonGreen cButtonDesign" : "cButtonDesign"}
                 title={write === "" ? "Confirm" : "Edit"}

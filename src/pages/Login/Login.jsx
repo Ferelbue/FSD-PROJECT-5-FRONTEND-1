@@ -12,41 +12,35 @@ import { Header } from "../../common/Header/Header";
 export const Login = () => {
   const datosUser = JSON.parse(localStorage.getItem("passport"));
   const navigate = useNavigate();
-
   const [tokenStorage, setTokenStorage] = useState(datosUser?.token);
-
   const [credenciales, setCredenciales] = useState({
     email: "",
     password: "",
   });
-
   const [credencialesError, setCredencialesError] = useState({
     emailError: "",
     passwordError: "",
   });
-
   const [msgError, setMsgError] = useState("");
-
-  useEffect(() => {
-    if (tokenStorage) {
-      navigate("/");
-    }
-  }, [tokenStorage]);
-
   const inputHandler = (e) => {
     setCredenciales((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
   };
-
+  
+  useEffect(() => {
+    if (tokenStorage) {
+      navigate("/");
+    }
+  }, [tokenStorage]);
+  
   const checkError = (e) => {
-    const error = validame(e.target.name, e.target.value);
+  const error = validame(e.target.name, e.target.value);
 
     setCredencialesError((prevState) => ({
       ...prevState,
       [e.target.name + "Error"]: error,
-      //el truco del almendruco nos dice que seria... nameError: error, o emailError: error
     }));
   };
 
