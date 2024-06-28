@@ -1,5 +1,5 @@
 // ONLINE DEPLOY
-const root = "https://fsd-project-4-backend-1.onrender.com/api/";
+const root = "https://tattoostudiosorrymom.zeabur.app/api/";
 
 //LOCAL DEPLOY
 // const root = "http://localhost:4000/api/";
